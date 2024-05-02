@@ -15,7 +15,7 @@
         >
     <Border CornerRadius="12">
         <Border.Background>
-            <ImageBrush ImageSource="C:\Users\Usuario\source\repos\Prueba1\Prueba1\Images\fondo.jpg"
+            <ImageBrush ImageSource="C:\Users\aleja\Source\Repos\AlejandroBlancoV\TrabajoFinal\Prueba1\Images\fondo.jpg"
                         Stretch="None"/>
         </Border.Background>
         <Border 
