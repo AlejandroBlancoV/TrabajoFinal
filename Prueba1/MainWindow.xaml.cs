@@ -46,5 +46,10 @@ namespace Prueba1
         {
             Application.Current.Shutdown();
         }
+
+        private void btnContinuar_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

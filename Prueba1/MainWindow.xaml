@@ -149,7 +149,7 @@
                             FontFamily="Montserrat"
                             Cursor="Hand"
                             Grid.Column="2"
-                            Click="btnClose_Click"
+                            Click="btnContinuar_Click"
                             Margin="0,30,0,0">
                         <Button.Style>
                             <Style TargetType="Button">
