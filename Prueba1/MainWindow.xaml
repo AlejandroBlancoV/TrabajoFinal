@@ -21,7 +21,7 @@
         <Border 
             CornerRadius="12"
             BorderThickness="1"
-            Opacity="0.8">
+            Opacity="0.9">
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Color="#462AD8" Offset="0"/>
@@ -131,7 +131,7 @@
                             Grid.Row="1"
                             Orientation="Vertical" Margin="522,0,26,0"
                             >
-                    <Image Source="C:\Users\Usuario\source\repos\Prueba1\Prueba1\Images\Logo.jpg" Height="95" Width="173"
+                    <Image Source="C:\Users\aleja\Source\Repos\AlejandroBlancoV\TrabajoFinal\Prueba1\Images\Logo.jpg" Height="95" Width="173"
                            Margin="0,25,0,0"/>
                     <TextBlock Text="Football Game"
                                Foreground="White"
