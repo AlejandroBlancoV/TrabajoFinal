@@ -15,7 +15,7 @@
         >
     <Border CornerRadius="12">
         <Border.Background>
-            <ImageBrush ImageSource="C:\Users\Usuario\source\repos\Prueba1\Prueba1\Images\fondo.jpg"
+            <ImageBrush ImageSource="pack://application:,,,/Images/fondo.jpg"
                         Stretch="None"/>
         </Border.Background>
         <Border 
@@ -131,7 +131,7 @@
                             Grid.Row="1"
                             Orientation="Vertical" Margin="522,0,26,0"
                             >
-                    <Image Source="C:\Users\Usuario\source\repos\Prueba1\Prueba1\Images\Logo.jpg" Height="95" Width="173"
+                    <Image Source="pack://application:,,,/Images/Logo.jpg" Height="95" Width="173"
                            Margin="0,25,0,0"/>
                     <TextBlock Text="Football Game"
                                Foreground="White"
@@ -185,7 +185,7 @@
                             FontFamily="Montserrat"
                             Cursor="Hand"
                             Grid.Column="2"
-                            Click="btnClose_Click"
+                            Click="btnNuevaPartida_Click"
                             Margin="0,30,0,0">
                         <Button.Style>
                             <Style TargetType="Button">
@@ -285,6 +285,7 @@
                     </Button>
 
                 </StackPanel>
+                <Grid Grid.Row="1" Margin="106,88,399,201"/>
 
 
             </Grid>

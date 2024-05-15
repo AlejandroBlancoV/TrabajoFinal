@@ -51,5 +51,10 @@ namespace Prueba1
         {
             
         }
+
+        private void btnNuevaPartida_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
