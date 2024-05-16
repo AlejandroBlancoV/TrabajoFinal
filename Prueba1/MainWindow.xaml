@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prueba1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="800"
+        Title="Inicio" Height="550" Width="800"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -49,7 +49,7 @@
                         <ColumnDefinition Width="25"/>
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="MENU PRINCIPAL"
+                    <TextBlock Text="INICIO"
                                Foreground="DarkGray"
                                FontSize="10"
                                FontFamily="Montserrat"
@@ -285,7 +285,7 @@
                     </Button>
 
                 </StackPanel>
-                <Grid Grid.Row="1" Margin="106,88,399,201"/>
+                <Grid Grid.Row="1" Margin="106,89,399,200"/>
 
 
             </Grid>
