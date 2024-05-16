@@ -63,7 +63,12 @@ namespace Prueba1.Backend
 
             return valor;
         }
-    }
+        public static int CalculaSalario(int valor, int media)
+        {
+            return 0;
+        }
+
+        }
 
     enum Posicion
     {
