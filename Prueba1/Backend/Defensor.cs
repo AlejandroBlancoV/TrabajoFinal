@@ -18,13 +18,14 @@ namespace Prueba1.Backend
        
 
         public Defensor(int idJugador, int idEquipo, string nombre, string apellido, int edad, int media,int defensa, int pase, int fisico, int regate, int disparo)
-        : base(idJugador, idEquipo, nombre, apellido, edad, Posicion.Portero, media)
+        : base(idJugador, idEquipo, nombre, apellido, edad, Posicion.Defensa, media)
         {
             Defensa = defensa;
             Pase = pase;
             Fisico = fisico;
             Regate = regate;
             Disparo = disparo;
+            Valor = CalculaValor(media, edad);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Prueba1.Backend
 {
-    class Portero : Jugador
+     class Portero : Jugador
     {
         public int Paradas { get; set; }
 
@@ -14,8 +14,8 @@ namespace Prueba1.Backend
             : base(idJugador, idEquipo, nombre, apellido, edad, Posicion.Portero, media)
         {
             Paradas = paradas;
+            Valor = CalculaValor(media, edad);
         }
-       
     }
 }
 
