@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Prueba1.Backend
 {
@@ -15,10 +11,10 @@ namespace Prueba1.Backend
         public int Edad { get; set; }
         public Posicion Posicion { get; set; }
         public int Media { get; set; }
-        public double Valor { get; set; }
-        public double Salario { get; set; }
+        public int Valor { get; set; }
+        public int Salario { get; set; }
 
-        public Jugador(int idJugador, int idEquipo, string nombre, string apellido, int edad, Posicion posicion, int media, double valor, double salario)
+        public Jugador(int idJugador, int idEquipo, string nombre, string apellido, int edad, Posicion posicion, int media)
         {
             IdJugador = idJugador;
             IdEquipo = idEquipo;
@@ -27,11 +23,36 @@ namespace Prueba1.Backend
             Edad = edad;
             Posicion = posicion;
             Media = media;
-            Valor = valor;
-            Salario = salario;
+            
         }
-       
+
+        public static int CalculaValor(int media, int edad)
+        {
+            int porcentajeEdad = 100;
+            int valor = 100000;
+
+            // Incrementa el valor basado en la media
+            for (int i = 0; i <= media; i++)
+            {
+                valor += (valor * 7) / 100;
+            }
+
+            // Ajusta el porcentaje de edad
+            for (int i = 16; i <= edad; i++)
+            {
+                porcentajeEdad -= 7;
+            }
+
+            // Calcula el ajuste por edad como float
+            float mejoraEdad = porcentajeEdad / 100.0f;
+            float valorMejoraEdad = valor * mejoraEdad;
+
+            valor += (int)valorMejoraEdad;
+
+            return valor;
+        }
     }
+
     enum Posicion
     {
         Portero,

@@ -10,11 +10,12 @@ namespace Prueba1.Backend
     {
         public int Paradas { get; set; }
 
-        public Portero(int idJugador, int idEquipo, string nombre, string apellido, int edad, int media, double valor, double salario)
-            : base(idJugador, idEquipo, nombre, apellido, edad, Posicion.Portero, media, valor, salario)
+        public Portero(int idJugador, int idEquipo, string nombre, string apellido, int edad, int media, int paradas)
+            : base(idJugador, idEquipo, nombre, apellido, edad, Posicion.Portero, media)
         {
-            Paradas = 0; // Se puede inicializar aquí o en el constructor.
+            Paradas = paradas;
         }
+       
     }
 }
 
