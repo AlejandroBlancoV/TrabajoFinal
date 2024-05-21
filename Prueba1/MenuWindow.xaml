@@ -12,7 +12,5 @@
          Background="Transparent"
          AllowsTransparency="True"
          >
-    <Grid>
-        
-    </Grid>
+    
 </Window>
