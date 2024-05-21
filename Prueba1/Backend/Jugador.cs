@@ -43,19 +43,19 @@ namespace Prueba1.Backend
             int porcentajeEdad = 100;
             int valor = 100000;
 
-            // Incrementa el valor basado en la media
+           
             for (int i = 0; i <= media; i++)
             {
                 valor += (valor * 7) / 100;
             }
 
-            // Ajusta el porcentaje de edad
+            
             for (int i = 16; i <= edad; i++)
             {
                 porcentajeEdad -= 7;
             }
 
-            // Calcula el ajuste por edad como float
+            
             float mejoraEdad = porcentajeEdad / 100.0f;
             float valorMejoraEdad = valor * mejoraEdad;
 
@@ -65,7 +65,17 @@ namespace Prueba1.Backend
         }
         public static int CalculaSalario(int valor, int media)
         {
-            return 0;
+            int salario = 0;
+            float cuenta = valor * 0.15f;
+            int porcentajeMedia = 100;
+            for (int i = 99; i > media; i--)
+            {
+                porcentajeMedia -= 5;
+            }
+            cuenta= cuenta * (porcentajeMedia / 100.0f);
+
+
+            return salario;
         }
 
         }
