@@ -9,7 +9,7 @@ namespace Prueba1.Backend
 
     internal class Medio: Jugador
     {
-        public static int media;
+        private static int media;
 
         public Medio(int idJugador, int idEquipo, string nombre, string apellido, int edad, int defensa, int pase, int fisico, int regate, int disparo, int paradas)
             : base(idJugador, idEquipo, nombre, apellido, edad, Posicion.Medio, media, defensa, pase, fisico, regate, disparo, paradas)

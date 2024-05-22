@@ -7,8 +7,12 @@ namespace Prueba1.Backend
     {
         private Jugador[] jugadores;
         private int limite;
+        private int valorTotal;
+        private int salarioTotal;
+        private double mediaEdad;
+        private double mediaMedia;
 
-        public Plantilla(int limite)
+        public Plantilla(int limite, Jugador[] jugadores)
         {
             if (limite <= 0)
             {
@@ -16,7 +20,12 @@ namespace Prueba1.Backend
             }
 
             this.limite = limite;
-            jugadores = new Jugador[limite];
+            this.jugadores = jugadores;
+            this.valorTotal = ValorTotal();
+            this.salarioTotal = SalarioTotal();
+            this.mediaEdad = MediaEdad();
+            this.mediaMedia = MediaMedia();
+
         }
 
         public void AgregarJugador(Jugador jugador)
@@ -78,19 +87,23 @@ namespace Prueba1.Backend
             return posicionValor[j1.Posicion].CompareTo(posicionValor[j2.Posicion]);
         }
 
-        public double MediaEdad()
+        private double MediaEdad()
         {
             return jugadores.Where(j => j != null).Average(j => j.Edad);
         }
 
-        public double MediaMedia()
+        private double MediaMedia()
         {
             return jugadores.Where(j => j != null).Average(j => j.Media);
         }
 
-        public int ValorTotal()
+        private int ValorTotal()
         {
             return jugadores.Where(j => j != null).Sum(j => j.Valor);
+        }
+        private int SalarioTotal()
+        {
+            return jugadores.Where(j => j != null).Sum(j => j.Salario);
         }
 
         private int CantidadJugadores()

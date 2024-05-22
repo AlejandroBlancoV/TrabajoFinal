@@ -28,4 +28,13 @@
     <Resource Include="Shields\MerengueCFLogo.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Backend\CSV\Apellidos.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Backend\CSV\Nombres.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
