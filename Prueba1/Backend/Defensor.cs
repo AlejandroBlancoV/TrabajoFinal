@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Prueba1.Backend
+﻿namespace Prueba1.Backend
 {
     class Defensor : Jugador
     {
@@ -20,7 +14,7 @@ namespace Prueba1.Backend
 
         private int CalculaMedia(int defensa, int pase, int fisico, int regate, int disparo)
         {
-            int sesenta = (defensa * 60)/ 100;
+            int sesenta = (defensa * 60) / 100;
             int treinta = (fisico * 30) / 100;
             int resto = (pase + regate + disparo) / 3;
             int diez = (resto * 10) / 100;

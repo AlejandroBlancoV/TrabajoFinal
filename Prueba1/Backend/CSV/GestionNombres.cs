@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 
 namespace Prueba1.Backend.CSV
 {
@@ -14,6 +11,8 @@ namespace Prueba1.Backend.CSV
         public GestionNombres() : this("Nombres.csv", "Apellidos.csv")
         {
         }
+
+
 
         public GestionNombres(string firstNameFilePath, string lastNameFilePath)
         {

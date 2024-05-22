@@ -1,23 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Windows.Controls;
-
-namespace Prueba1.Backend
+﻿namespace Prueba1.Backend
 {
-     class Portero : Jugador
+    class Portero : Jugador
     {
         private static int media;
 
         public Portero(int idJugador, int idEquipo, string nombre, string apellido, int edad, int defensa, int pase, int fisico, int regate, int disparo, int paradas)
-            : base( idJugador,  idEquipo,  nombre,  apellido,  edad,  Posicion.Portero,  media,  defensa,  pase,  fisico,  regate,  disparo,  paradas)
+            : base(idJugador, idEquipo, nombre, apellido, edad, Posicion.Portero, media, defensa, pase, fisico, regate, disparo, paradas)
         {
             media = CalculaMedia(defensa, pase, fisico, regate, disparo, paradas);
             Valor = CalculaValor(media, edad);
-            Media= media;
+            Media = media;
         }
 
         private int CalculaMedia(int defensa, int pase, int fisico, int regate, int disparo, int paradas)

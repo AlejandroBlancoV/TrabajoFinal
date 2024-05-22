@@ -274,7 +274,6 @@
                         </Button.Template>
                     </Button>
                 </StackPanel>
-                <Grid Grid.Row="1" Margin="106,89,399,200"/>
             </Grid>
         </Border>
     </Border>

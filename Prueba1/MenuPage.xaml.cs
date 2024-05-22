@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Prueba1.Backend.CSV;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -10,6 +11,7 @@ namespace Prueba1
         {
             InitializeComponent();
         }
+
         private void Page_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -30,7 +32,9 @@ namespace Prueba1
 
         private void btnContinuar_Click(object sender, RoutedEventArgs e)
         {
-            // Acción para continuar
+            GestionNombres gestionNombres = new GestionNombres();
+            String nombre = gestionNombres.GenerarNombreAleatorio();
+            MessageBox.Show(nombre);
         }
 
         private void btnNuevaPartida_Click(object sender, RoutedEventArgs e)

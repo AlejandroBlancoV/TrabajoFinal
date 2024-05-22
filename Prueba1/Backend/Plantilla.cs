@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace Prueba1.Backend
+﻿namespace Prueba1.Backend
 {
     class Plantilla
     {
@@ -74,7 +71,7 @@ namespace Prueba1.Backend
 
         private int CompararPorPosicion(Jugador j1, Jugador j2)
         {
-            
+
             Dictionary<Posicion, int> posicionValor = new Dictionary<Posicion, int>
             {
                 { Posicion.Portero, 0 },
@@ -83,7 +80,7 @@ namespace Prueba1.Backend
                 { Posicion.Delantero, 3 }
             };
 
-            
+
             return posicionValor[j1.Posicion].CompareTo(posicionValor[j2.Posicion]);
         }
 
