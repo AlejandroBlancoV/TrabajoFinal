@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Prueba1.Backend
+﻿namespace Prueba1.Backend
 {
 
     internal class Delantero : Jugador
     {
-        public static int media;
+        private static int media;
 
         public Delantero(int idJugador, int idEquipo, string nombre, string apellido, int edad, int defensa, int pase, int fisico, int regate, int disparo, int paradas)
             : base(idJugador, idEquipo, nombre, apellido, edad, Posicion.Delantero, media, defensa, pase, fisico, regate, disparo, paradas)

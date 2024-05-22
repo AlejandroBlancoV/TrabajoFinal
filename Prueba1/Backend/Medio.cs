@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Prueba1.Backend
+﻿namespace Prueba1.Backend
 {
 
-    internal class Medio: Jugador
+    internal class Medio : Jugador
     {
-        public static int media;
+        private static int media;
 
         public Medio(int idJugador, int idEquipo, string nombre, string apellido, int edad, int defensa, int pase, int fisico, int regate, int disparo, int paradas)
             : base(idJugador, idEquipo, nombre, apellido, edad, Posicion.Medio, media, defensa, pase, fisico, regate, disparo, paradas)

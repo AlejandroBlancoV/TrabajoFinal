@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Prueba1.Backend
+﻿namespace Prueba1.Backend
 {
     class Jugador
     {
@@ -43,19 +41,19 @@ namespace Prueba1.Backend
             int porcentajeEdad = 100;
             int valor = 100000;
 
-           
+
             for (int i = 0; i <= media; i++)
             {
                 valor += (valor * 7) / 100;
             }
 
-            
+
             for (int i = 16; i <= edad; i++)
             {
                 porcentajeEdad -= 7;
             }
 
-            
+
             float mejoraEdad = porcentajeEdad / 100.0f;
             float valorMejoraEdad = valor * mejoraEdad;
 
@@ -72,13 +70,13 @@ namespace Prueba1.Backend
             {
                 porcentajeMedia -= 5;
             }
-            cuenta= cuenta * (porcentajeMedia / 100.0f);
+            cuenta = cuenta * (porcentajeMedia / 100.0f);
 
 
             return salario;
         }
 
-        }
+    }
 
     enum Posicion
     {

@@ -11,21 +11,34 @@
   <ItemGroup>
     <None Remove="Images\fondo.jpg" />
     <None Remove="Images\Logo.jpg" />
-    <None Remove="Shields\ChironaFCLogo.jpg" />
-    <None Remove="Shields\CholoCFLogo.jpg" />
-    <None Remove="Shields\GabarraFCLogo.jpg" />
-    <None Remove="Shields\MasiaFCLogo.jpg" />
-    <None Remove="Shields\MerengueCFLogo.jpg" />
+    <None Remove="Images\Shields\ChironaFCLogo.jpg" />
+    <None Remove="Images\Shields\CholoCFLogo.jpg" />
+    <None Remove="Images\Shields\GabarraFCLogo.jpg" />
+    <None Remove="Images\Shields\MasiaFCLogo.jpg" />
+    <None Remove="Images\Shields\MerengueCFLogo.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\fondo.jpg" />
-    <Resource Include="Images\Logo.jpg" />
-    <Resource Include="Shields\ChironaFCLogo.jpg" />
-    <Resource Include="Shields\CholoCFLogo.jpg" />
-    <Resource Include="Shields\GabarraFCLogo.jpg" />
-    <Resource Include="Shields\MasiaFCLogo.jpg" />
-    <Resource Include="Shields\MerengueCFLogo.jpg" />
+    <Resource Include="Images\fondo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Logo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Shields\ChironaFCLogo.jpg" />
+    <Resource Include="Images\Shields\CholoCFLogo.jpg" />
+    <Resource Include="Images\Shields\GabarraFCLogo.jpg" />
+    <Resource Include="Images\Shields\MasiaFCLogo.jpg" />
+    <Resource Include="Images\Shields\MerengueCFLogo.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Apellidos.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Nombres.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
