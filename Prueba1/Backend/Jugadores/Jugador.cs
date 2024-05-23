@@ -33,6 +33,22 @@
             Paradas = paradas;
             Valor = CalculaValor(media, edad);
         }
+        public Jugador(string nombre, int edad, Posicion posicion, int media, int defensa, int pase, int fisico, int regate, int disparo, int paradas)
+        {
+            Nombre = nombre;
+            Edad = edad;
+            Posicion = posicion;
+            Media = media;
+            Defensa = defensa;
+            Pase = pase;
+            Fisico = fisico;
+            Regate = regate;
+            Disparo = disparo;
+            Paradas = paradas;
+            Valor = CalculaValor(media, edad);
+            Salario = CalculaSalario(Valor, Media);
+        }
+
 
         public static int CalculaValor(int media, int edad)
         {

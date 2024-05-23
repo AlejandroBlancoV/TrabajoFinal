@@ -11,6 +11,15 @@
             Valor = CalculaValor(media, edad);
             Media = media;
         }
+        public Portero(string nombre, int edad, int defensa, int pase, int fisico, int regate, int disparo, int paradas)
+        : base(nombre, edad, Posicion.Portero, media, defensa, pase, fisico, regate, disparo, paradas)
+        {
+            media = CalculaMedia(defensa, pase, fisico, regate, disparo, paradas);
+            Valor = CalculaValor(media, edad);
+            Media = media;
+        }
+
+
 
         private int CalculaMedia(int defensa, int pase, int fisico, int regate, int disparo, int paradas)
         {

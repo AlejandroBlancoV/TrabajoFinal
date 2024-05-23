@@ -11,14 +11,24 @@
             Valor = CalculaValor(media, edad);
             Media = media;
         }
+        public Defensor(string nombre, int edad, int defensa, int pase, int fisico, int regate, int disparo, int paradas)
+        : base(nombre, edad, Posicion.Defensa, media, defensa, pase, fisico, regate, disparo, paradas)
+        {
+            media = CalculaMedia(defensa, pase, fisico, regate, disparo);
+            Valor = CalculaValor(media, edad);
+            Media = media;
+        }
+
+
 
         private int CalculaMedia(int defensa, int pase, int fisico, int regate, int disparo)
         {
-            int sesenta = defensa * 60 / 100;
+            int cincuenta = defensa * 50 / 100;
             int treinta = fisico * 30 / 100;
-            int resto = (pase + regate + disparo) / 3;
+            int diez1= pase * 10 / 100;
+            int resto = (regate + disparo) / 2;
             int diez = resto * 10 / 100;
-            return sesenta + treinta + diez;
+            return cincuenta + treinta + diez1  +diez;
 
         }
     }
