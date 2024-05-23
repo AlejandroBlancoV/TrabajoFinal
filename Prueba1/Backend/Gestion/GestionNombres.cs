@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Prueba1.Backend.CSV
+namespace Prueba1.Backend.Gestion
 {
     internal class GestionNombres
     {
@@ -16,9 +16,9 @@ namespace Prueba1.Backend.CSV
 
         public GestionNombres(string firstNameFilePath, string lastNameFilePath)
         {
-            this.nombres = File.ReadAllLines(firstNameFilePath).ToList();
-            this.apellidos = File.ReadAllLines(lastNameFilePath).ToList();
-            this.random = new Random();
+            nombres = File.ReadAllLines(firstNameFilePath).ToList();
+            apellidos = File.ReadAllLines(lastNameFilePath).ToList();
+            random = new Random();
         }
 
         public string GenerarNombreAleatorio()
@@ -30,12 +30,12 @@ namespace Prueba1.Backend.CSV
 
         private string GenerarNombre()
         {
-            return this.nombres[this.random.Next(this.nombres.Count)];
+            return nombres[random.Next(nombres.Count)];
         }
 
         private string GenerarApellido()
         {
-            return this.apellidos[this.random.Next(this.apellidos.Count)];
+            return apellidos[random.Next(apellidos.Count)];
         }
     }
 }

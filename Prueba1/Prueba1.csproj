@@ -19,6 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\fondo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

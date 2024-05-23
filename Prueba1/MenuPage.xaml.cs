@@ -1,4 +1,5 @@
-﻿using Prueba1.Backend.CSV;
+﻿using Prueba1.Backend.Gestion;
+using Prueba1.Backend.Jugadores;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -32,9 +33,9 @@ namespace Prueba1
 
         private void btnContinuar_Click(object sender, RoutedEventArgs e)
         {
-            GestionNombres gestionNombres = new GestionNombres();
-            String nombre = gestionNombres.GenerarNombreAleatorio();
-            MessageBox.Show(nombre);
+            GestionJugadores gestionJugadores = new GestionJugadores();
+            Delantero prueba= gestionJugadores.GeneraDelantero();
+            MessageBox.Show(prueba.ToString());
         }
 
         private void btnNuevaPartida_Click(object sender, RoutedEventArgs e)
