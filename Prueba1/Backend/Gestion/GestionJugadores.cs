@@ -27,8 +27,8 @@ namespace Prueba1.Backend.Gestion
             string nombre = gestionNombres.GenerarNombreAleatorio();
             int edad = new Random().Next(16, 36);
             int defensa = new Random().Next(50, 99);
-            int pase = new Random().Next(20, 80);
-            int fisico = new Random().Next(40, 99);
+            int pase = new Random().Next(20, 75);
+            int fisico = new Random().Next(50, 99);
             int regate = new Random().Next(15, 70);
             int disparo = new Random().Next(15, 70);
             int paradas = new Random().Next(1, 1);

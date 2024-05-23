@@ -31,7 +31,6 @@
             Regate = regate;
             Disparo = disparo;
             Paradas = paradas;
-            Valor = CalculaValor(media, edad);
         }
         public Jugador(string nombre, int edad, Posicion posicion, int media, int defensa, int pase, int fisico, int regate, int disparo, int paradas)
         {
@@ -45,8 +44,6 @@
             Regate = regate;
             Disparo = disparo;
             Paradas = paradas;
-            Valor = CalculaValor(media, edad);
-            Salario = CalculaSalario(Valor, Media);
         }
 
 
@@ -77,18 +74,25 @@
         }
         public static int CalculaSalario(int valor, int media)
         {
-            int salario = 0;
-            float cuenta = valor * 0.15f;
+            int salario = (valor * 15) / 100;
+            float cuenta = 0;
             int porcentajeMedia = 100;
             for (int i = 99; i > media; i--)
             {
-                porcentajeMedia -= 5;
+                porcentajeMedia -= 2;
             }
-            cuenta = cuenta * (porcentajeMedia / 100.0f);
-
+            cuenta = porcentajeMedia / 100.0f;
+            cuenta += 1;
+            salario = (int)(salario * cuenta);
 
             return salario;
         }
+        public override string ToString()
+        {
+            return $"Nombre: {Nombre}, Edad: {Edad}, Posición: {Posicion}, Media: {Media}, Valor: {Valor}, Salario: {Salario}, Disparo: {Disparo}, Pase: {Pase}, Regate: {Regate}, Físico: {Fisico}, Defensa: {Defensa}, Paradas: {Paradas}";
+        }
+
+
 
     }
 
