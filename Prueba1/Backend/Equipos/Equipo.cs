@@ -1,6 +1,7 @@
 ﻿using System.Windows.Controls;
+using Prueba1.Backend.Jugadores;
 
-namespace Prueba1.Backend
+namespace Prueba1.Backend.Equipos
 {
     public class Equipo
     {

@@ -1,4 +1,6 @@
-﻿namespace Prueba1.Backend
+﻿using Prueba1.Backend.Jugadores;
+
+namespace Prueba1.Backend.Equipos
 {
     public class Plantilla
     {

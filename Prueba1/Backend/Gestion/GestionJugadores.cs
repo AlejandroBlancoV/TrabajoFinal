@@ -1,15 +1,14 @@
-﻿using Prueba1.Backend.CSV;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Prueba1.Backend
+namespace Prueba1.Backend.Gestion
 {
     internal class GestionJugadores
     {
         GestionNombres gestionNombres = new GestionNombres();
-       
+
     }
 }

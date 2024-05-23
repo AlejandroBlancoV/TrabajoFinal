@@ -1,4 +1,4 @@
-﻿namespace Prueba1.Backend
+﻿namespace Prueba1.Backend.Jugadores
 {
     class Portero : Jugador
     {
@@ -14,9 +14,9 @@
 
         private int CalculaMedia(int defensa, int pase, int fisico, int regate, int disparo, int paradas)
         {
-            int noventa = (paradas * 90) / 100;
+            int noventa = paradas * 90 / 100;
             int resto = (defensa + pase + fisico + regate + disparo) / 5;
-            int diez = (resto * 10) / 100;
+            int diez = resto * 10 / 100;
             return noventa + diez;
 
         }

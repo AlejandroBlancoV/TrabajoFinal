@@ -1,4 +1,4 @@
-﻿namespace Prueba1.Backend
+﻿namespace Prueba1.Backend.Jugadores
 {
     public class Jugador
     {
@@ -42,7 +42,7 @@
 
             for (int i = 0; i <= media; i++)
             {
-                valor += (valor * 7) / 100;
+                valor += valor * 7 / 100;
             }
 
 
@@ -76,7 +76,7 @@
 
     }
 
-   public enum Posicion
+    public enum Posicion
     {
         Portero,
         Defensa,
