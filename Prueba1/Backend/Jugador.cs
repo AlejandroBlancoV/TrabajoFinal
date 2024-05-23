@@ -1,11 +1,10 @@
 ﻿namespace Prueba1.Backend
 {
-    class Jugador
+    public class Jugador
     {
         public int IdJugador { get; set; }
         public int IdEquipo { get; set; }
         public string Nombre { get; set; }
-        public string Apellido { get; set; }
         public int Edad { get; set; }
         public Posicion Posicion { get; set; }
         public int Media { get; set; }// Atributo que se calcula según posición
@@ -18,12 +17,11 @@
         public int Disparo { get; set; }
         public int Paradas { get; set; }
 
-        public Jugador(int idJugador, int idEquipo, string nombre, string apellido, int edad, Posicion posicion, int media, int defensa, int pase, int fisico, int regate, int disparo, int paradas)
+        public Jugador(int idJugador, int idEquipo, string nombre, int edad, Posicion posicion, int media, int defensa, int pase, int fisico, int regate, int disparo, int paradas)
         {
             IdJugador = idJugador;
             IdEquipo = idEquipo;
             Nombre = nombre;
-            Apellido = apellido;
             Edad = edad;
             Posicion = posicion;
             Media = media;
@@ -78,7 +76,7 @@
 
     }
 
-    enum Posicion
+   public enum Posicion
     {
         Portero,
         Defensa,

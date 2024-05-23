@@ -1,64 +1,64 @@
 ﻿namespace Prueba1.Backend
 {
-    public class Plantilla
+    public class Alineacion
     {
         private Jugador[] jugadores;
-        private int limite;
+        private const int limite = 11;
 
-        public Plantilla(int limite, Jugador[] jugadores)
+        public Alineacion(Jugador[] jugadores)
         {
-            if (limite <= 0)
+            if (jugadores.Length != limite)
             {
-                throw new ArgumentException("El límite de la plantilla debe ser mayor que cero.");
+                throw new ArgumentException($"La alineación debe tener exactamente {limite} jugadores.");
             }
 
-            this.limite = limite;
             this.jugadores = jugadores;
         }
 
-        public void AgregarJugador(Jugador jugador)
+        public Jugador[] ObtenerJugadoresPorPosicion(Posicion posicion)
         {
-            if (jugadores.Contains(jugador))
+            return jugadores.Where(j => j.Posicion == posicion).ToArray();
+        }
+
+        public double MediaEdad()
+        {
+            return jugadores.Average(j => j.Edad);
+        }
+
+        public double MediaMedia()
+        {
+            return jugadores.Average(j => j.Media);
+        }
+
+        public int ValorTotal()
+        {
+            return jugadores.Sum(j => j.Valor);
+        }
+
+        public int SalarioTotal()
+        {
+            return jugadores.Sum(j => j.Salario);
+        }
+        public void CambiarJugador(Jugador jugadorFuera, Jugador jugadorDentro)
+        {
+            for (int i = 0; i < jugadores.Length; i++)
             {
-                throw new InvalidOperationException("El jugador ya está en la plantilla.");
+                if (jugadores[i] == jugadorFuera)
+                {
+                    jugadores[i] = jugadorDentro;
+                    return;
+                }
             }
 
-            if (CantidadJugadores() >= limite)
-            {
-                throw new InvalidOperationException("La plantilla está llena, no se puede agregar más jugadores.");
-            }
-
-            jugadores[CantidadJugadores()] = jugador;
+            throw new ArgumentException("El jugador que se intenta sacar no está en la alineación.");
         }
-
-        public void QuitarJugador(Jugador jugador)
+        public bool EstaEnAlineacion(Jugador jugador)
         {
-            if (!jugadores.Contains(jugador))
-            {
-                throw new InvalidOperationException("El jugador no está en la plantilla.");
-            }
-
-            jugadores = jugadores.Where(j => j != jugador).ToArray();
+            return jugadores.Contains(jugador);
         }
-
-        public double ObtenerMediaEdad()
+        public Jugador[] ObtenerTodosLosJugadores()
         {
-            return jugadores.Where(j => j != null).Average(j => j.Edad);
-        }
-
-        public int ObtenerValorTotal()
-        {
-            return jugadores.Where(j => j != null).Sum(j => j.Valor);
-        }
-
-        public int ObtenerSalarioTotal()
-        {
-            return jugadores.Where(j => j != null).Sum(j => j.Salario);
-        }
-
-        private int CantidadJugadores()
-        {
-            return jugadores.Count(j => j != null);
+            return jugadores;
         }
         public Jugador[] OrdenarPorMedia()
         {
@@ -108,7 +108,7 @@
         {
             return jugadores.OrderByDescending(j => j.Posicion).ToArray();
         }
-
+        
 
 
 

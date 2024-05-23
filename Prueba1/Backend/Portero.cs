@@ -4,8 +4,8 @@
     {
         private static int media;
 
-        public Portero(int idJugador, int idEquipo, string nombre, string apellido, int edad, int defensa, int pase, int fisico, int regate, int disparo, int paradas)
-            : base(idJugador, idEquipo, nombre, apellido, edad, Posicion.Portero, media, defensa, pase, fisico, regate, disparo, paradas)
+        public Portero(int idJugador, int idEquipo, string nombre, int edad, int defensa, int pase, int fisico, int regate, int disparo, int paradas)
+            : base(idJugador, idEquipo, nombre, edad, Posicion.Portero, media, defensa, pase, fisico, regate, disparo, paradas)
         {
             media = CalculaMedia(defensa, pase, fisico, regate, disparo, paradas);
             Valor = CalculaValor(media, edad);
