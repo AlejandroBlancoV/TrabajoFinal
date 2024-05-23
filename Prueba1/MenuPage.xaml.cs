@@ -34,7 +34,7 @@ namespace Prueba1
         private void btnContinuar_Click(object sender, RoutedEventArgs e)
         {
             GestionJugadores gestionJugadores = new GestionJugadores();
-            Medio prueba= gestionJugadores.GeneraMedio();
+            Delantero prueba= gestionJugadores.GeneraDelantero();
             MessageBox.Show(prueba.ToString());
         }
 
