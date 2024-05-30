@@ -4,115 +4,128 @@ namespace Prueba1.Backend.Equipos
 {
     public class Alineacion
     {
-        private Jugador[] jugadores;
+        public int Id { get; set; }
+        public int EquipoId { get; set; }
+        public List<Jugador> Jugadores { get; set; }
         private const int limite = 11;
-
-        public Alineacion(Jugador[] jugadores)
+        private Alineacion() { }
+        public Alineacion(List<Jugador> jugadores)
         {
-            if (jugadores.Length != limite)
+            if (jugadores.Count != limite)
             {
                 throw new ArgumentException($"La alineación debe tener exactamente {limite} jugadores.");
             }
 
-            this.jugadores = jugadores;
+            this.Jugadores = jugadores;
         }
 
         public Jugador[] ObtenerJugadoresPorPosicion(Posicion posicion)
         {
-            return jugadores.Where(j => j.Posicion == posicion).ToArray();
+            return Jugadores.Where(j => j.Posicion == posicion).ToArray();
         }
 
         public double MediaEdad()
         {
-            return jugadores.Average(j => j.Edad);
+            return Jugadores.Average(j => j.Edad);
         }
 
         public double MediaMedia()
         {
-            return jugadores.Average(j => j.Media);
+            return Jugadores.Average(j => j.Media);
         }
 
         public int ValorTotal()
         {
-            return jugadores.Sum(j => j.Valor);
+            return Jugadores.Sum(j => j.Valor);
         }
 
         public int SalarioTotal()
         {
-            return jugadores.Sum(j => j.Salario);
+            return Jugadores.Sum(j => j.Salario);
         }
+
         public void CambiarJugador(Jugador jugadorFuera, Jugador jugadorDentro)
         {
-            for (int i = 0; i < jugadores.Length; i++)
+            for (int i = 0; i < Jugadores.Count; i++)
             {
-                if (jugadores[i] == jugadorFuera)
+                if (Jugadores[i] == jugadorFuera)
                 {
-                    jugadores[i] = jugadorDentro;
+                    Jugadores[i] = jugadorDentro;
                     return;
                 }
             }
 
             throw new ArgumentException("El jugador que se intenta sacar no está en la alineación.");
         }
+
         public bool EstaEnAlineacion(Jugador jugador)
         {
-            return jugadores.Contains(jugador);
+            return Jugadores.Contains(jugador);
         }
+
         public Jugador[] ObtenerTodosLosJugadores()
         {
-            return jugadores;
+            return Jugadores.ToArray();
         }
+
         public Jugador[] OrdenarPorMedia()
         {
-            return jugadores.OrderByDescending(j => j.Media).ToArray();
+            return Jugadores.OrderByDescending(j => j.Media).ToArray();
         }
+
         public Jugador[] OrdenarPorMediaMenor()
         {
-            return jugadores.OrderBy(j => j.Media).ToArray();
+            return Jugadores.OrderBy(j => j.Media).ToArray();
         }
+
         public Jugador[] OrdenarPorValor()
         {
-            return jugadores.OrderByDescending(j => j.Valor).ToArray();
+            return Jugadores.OrderByDescending(j => j.Valor).ToArray();
         }
+
         public Jugador[] OrdenarPorValorMenor()
         {
-            return jugadores.OrderBy(j => j.Valor).ToArray();
+            return Jugadores.OrderBy(j => j.Valor).ToArray();
         }
+
         public Jugador[] OrdenarPorSalario()
         {
-            return jugadores.OrderByDescending(j => j.Salario).ToArray();
+            return Jugadores.OrderByDescending(j => j.Salario).ToArray();
         }
+
         public Jugador[] OrdenarPorSalarioMenor()
         {
-            return jugadores.OrderBy(j => j.Salario).ToArray();
+            return Jugadores.OrderBy(j => j.Salario).ToArray();
         }
+
         public Jugador[] OrdenarPorEdad()
         {
-            return jugadores.OrderByDescending(j => j.Edad).ToArray();
+            return Jugadores.OrderByDescending(j => j.Edad).ToArray();
         }
+
         public Jugador[] OrdenarPorEdadMenor()
         {
-            return jugadores.OrderBy(j => j.Edad).ToArray();
+            return Jugadores.OrderBy(j => j.Edad).ToArray();
         }
+
         public Jugador[] OrdenarPorNombre()
         {
-            return jugadores.OrderBy(j => j.Nombre).ToArray();
+            return Jugadores.OrderBy(j => j.Nombre).ToArray();
         }
+
         public Jugador[] OrdenarPorNombreMenor()
         {
-            return jugadores.OrderByDescending(j => j.Nombre).ToArray();
+            return Jugadores.OrderByDescending(j => j.Nombre).ToArray();
         }
+
         public Jugador[] OrdenarPorPosicion()
         {
-            return jugadores.OrderBy(j => j.Posicion).ToArray();
+            return Jugadores.OrderBy(j => j.Posicion).ToArray();
         }
+
         public Jugador[] OrdenarPorPosicionMenor()
         {
-            return jugadores.OrderByDescending(j => j.Posicion).ToArray();
+            return Jugadores.OrderByDescending(j => j.Posicion).ToArray();
         }
-
-
-
-
     }
 }

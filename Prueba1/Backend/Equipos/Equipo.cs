@@ -1,13 +1,12 @@
-﻿using System.Windows.Controls;
-using Prueba1.Backend.Jugadores;
+﻿using Prueba1.Backend.Jugadores;
 
 namespace Prueba1.Backend.Equipos
 {
     public class Equipo
     {
-        public int IdEquipo { get; set; }
+        public int Id { get; set; }
         public string Nombre { get; set; }
-        public Image Escudo { get; set; }
+        public byte[] Escudo { get; set; }
         public Alineacion Alineacion { get; set; }
         public Plantilla Plantilla { get; set; }
         public int Presupuesto { get; set; }
@@ -20,7 +19,19 @@ namespace Prueba1.Backend.Equipos
         public int GolesEnContra { get; set; }
         public int DiferenciaGoles { get; set; }
         public int Posicion { get; set; }
+        public bool ControladoPorUsuario { get; set; }
 
+        public Equipo() { }
+
+        public Equipo(string nombre, byte[] escudo, Alineacion alineacion, Plantilla plantilla, int presupuesto, bool controladoPorUsuario)
+        {
+            Nombre = nombre;
+            Escudo = escudo;
+            Alineacion = alineacion;
+            Plantilla = plantilla;
+            Presupuesto = presupuesto;
+            ControladoPorUsuario = controladoPorUsuario;
+        }
 
         public void CambiarAlineacion(Alineacion nuevaAlineacion)
         {

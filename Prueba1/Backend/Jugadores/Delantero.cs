@@ -5,6 +5,7 @@
     {
         private static int media;
 
+        public Delantero() { }
         public Delantero(int idJugador, int idEquipo, string nombre, int edad, int defensa, int pase, int fisico, int regate, int disparo, int paradas)
             : base(idJugador, idEquipo, nombre, edad, Posicion.Delantero, media, defensa, pase, fisico, regate, disparo, paradas)
         {

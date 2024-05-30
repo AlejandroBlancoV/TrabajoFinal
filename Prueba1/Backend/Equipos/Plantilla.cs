@@ -4,9 +4,11 @@ namespace Prueba1.Backend.Equipos
 {
     public class Plantilla
     {
-        private Jugador[] jugadores;
+        public int Id { get; set; }
+        public Jugador[] jugadores;
         private int limite;
 
+        public Plantilla() { }
         public Plantilla(int limite, Jugador[] jugadores)
         {
             if (limite <= 0)

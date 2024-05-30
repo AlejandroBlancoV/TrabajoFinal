@@ -17,6 +17,8 @@
         public int Disparo { get; set; }
         public int Paradas { get; set; }
 
+        public Jugador() {}
+
         public Jugador(int idJugador, int idEquipo, string nombre, int edad, Posicion posicion, int media, int defensa, int pase, int fisico, int regate, int disparo, int paradas)
         {
             IdJugador = idJugador;

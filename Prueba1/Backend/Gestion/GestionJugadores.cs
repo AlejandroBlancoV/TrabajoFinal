@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Prueba1.Backend.Jugadores;
+﻿using Prueba1.Backend.Jugadores;
 namespace Prueba1.Backend.Gestion
 {
     internal class GestionJugadores
