@@ -1,5 +1,4 @@
 using Prueba1.Backend.Equipos;
-using System.Collections.Generic;
 
 namespace Prueba1.Backend.Competiciones
 {
