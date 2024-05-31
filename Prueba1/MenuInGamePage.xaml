@@ -28,7 +28,7 @@
         <Border 
         CornerRadius="12"
         BorderThickness="1"
-        Opacity="0.90"
+        Opacity="0.9"
         BorderBrush="{StaticResource BorderBrushGradient}">
 
             <Border.Background>
