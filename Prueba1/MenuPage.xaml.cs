@@ -3,14 +3,17 @@ using Prueba1.Backend.Jugadores;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Prueba1.Backend.BBDD;
 
 namespace Prueba1
 {
     public partial class MenuPage : Page
     {
-        public MenuPage()
+        private readonly MiContexto _contexto;
+        public MenuPage(MiContexto contexto)
         {
             InitializeComponent();
+            _contexto = contexto;
         }
 
         private void Page_MouseDown(object sender, MouseButtonEventArgs e)

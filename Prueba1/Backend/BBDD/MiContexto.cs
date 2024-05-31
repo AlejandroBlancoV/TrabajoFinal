@@ -24,6 +24,13 @@ namespace Prueba1.Backend.BBDD
                 .HasValue<Delantero>("Delantero")
                 .HasValue<Medio>("Medio")
                 .HasValue<Portero>("Portero");
+
+            
+            modelBuilder.Entity<Jugador>()
+                .HasOne(j => j.Equipo)
+                .WithMany(e => e.Jugadores)
+                .HasForeignKey(j => j.EquipoId);
+
         }
     }
 }

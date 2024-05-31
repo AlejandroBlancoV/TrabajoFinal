@@ -1,10 +1,13 @@
-﻿namespace Prueba1.Backend.Jugadores
+﻿using Prueba1.Backend.Equipos;
+
+namespace Prueba1.Backend.Jugadores
 {
     public class Jugador
     {
-        public int IdJugador { get; set; }
-        public int IdEquipo { get; set; }
+        public int Id { get; set; }
         public string Nombre { get; set; }
+        public int EquipoId { get; set; }
+        public Equipo Equipo { get; set; }
         public int Edad { get; set; }
         public Posicion Posicion { get; set; }
         public int Media { get; set; }// Atributo que se calcula según posición
@@ -17,12 +20,12 @@
         public int Disparo { get; set; }
         public int Paradas { get; set; }
 
-        public Jugador() {}
+        public Jugador() { }
 
-        public Jugador(int idJugador, int idEquipo, string nombre, int edad, Posicion posicion, int media, int defensa, int pase, int fisico, int regate, int disparo, int paradas)
+        public Jugador(int id, int equipoId, string nombre, int edad, Posicion posicion, int media, int defensa, int pase, int fisico, int regate, int disparo, int paradas)
         {
-            IdJugador = idJugador;
-            IdEquipo = idEquipo;
+            Id = id;
+            EquipoId = equipoId;
             Nombre = nombre;
             Edad = edad;
             Posicion = posicion;
@@ -34,6 +37,7 @@
             Disparo = disparo;
             Paradas = paradas;
         }
+
         public Jugador(string nombre, int edad, Posicion posicion, int media, int defensa, int pase, int fisico, int regate, int disparo, int paradas)
         {
             Nombre = nombre;
@@ -48,24 +52,20 @@
             Paradas = paradas;
         }
 
-
         public static int CalculaValor(int media, int edad)
         {
             int porcentajeEdad = 100;
             int valor = 100000;
-
 
             for (int i = 0; i <= media; i++)
             {
                 valor += valor * 7 / 100;
             }
 
-
             for (int i = 16; i <= edad; i++)
             {
                 porcentajeEdad -= 7;
             }
-
 
             float mejoraEdad = porcentajeEdad / 100.0f;
             float valorMejoraEdad = valor * mejoraEdad;
@@ -74,6 +74,7 @@
 
             return valor;
         }
+
         public static int CalculaSalario(int valor, int media)
         {
             int salario = (valor * 15) / 100;
@@ -89,13 +90,11 @@
 
             return salario;
         }
+
         public override string ToString()
         {
             return $"Nombre: {Nombre}, Edad: {Edad}, Posición: {Posicion}, Media: {Media}, Valor: {Valor}, Salario: {Salario}, Disparo: {Disparo}, Pase: {Pase}, Regate: {Regate}, Físico: {Fisico}, Defensa: {Defensa}, Paradas: {Paradas}";
         }
-
-
-
     }
 
     public enum Posicion

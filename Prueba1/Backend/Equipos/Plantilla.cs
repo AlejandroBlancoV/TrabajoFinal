@@ -5,6 +5,7 @@ namespace Prueba1.Backend.Equipos
     public class Plantilla
     {
         public int Id { get; set; }
+        public int EquipoId { get; set; }
         public Jugador[] jugadores;
         private int limite;
 

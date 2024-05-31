@@ -1,10 +1,14 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using Prueba1.Backend.BBDD; // Asegúrate de importar el espacio de nombres correcto
 
 namespace Prueba1
 {
     public partial class MainWindow : Window
     {
+        // Crea una instancia de MiContexto
+        public static MiContexto Contexto { get; } = new MiContexto();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -12,7 +16,7 @@ namespace Prueba1
 
         private void Frame_Loaded(object sender, RoutedEventArgs e)
         {
-            MainFrame.NavigationService.Navigate(new MenuPage());
+            MainFrame.NavigationService.Navigate(new MenuPage(Contexto));
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

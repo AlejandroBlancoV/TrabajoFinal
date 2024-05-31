@@ -2,11 +2,13 @@
 
 namespace Prueba1.Backend.Equipos
 {
+    // Bufones Escandalosos Trayendo Improvisaciones Simpáticas (B.E.T.I.S)
     public class Equipo
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
         public byte[] Escudo { get; set; }
+        public ICollection<Jugador> Jugadores { get; set; }
         public Alineacion Alineacion { get; set; }
         public Plantilla Plantilla { get; set; }
         public int Presupuesto { get; set; }
@@ -21,7 +23,10 @@ namespace Prueba1.Backend.Equipos
         public int Posicion { get; set; }
         public bool ControladoPorUsuario { get; set; }
 
-        public Equipo() { }
+        public Equipo()
+        {
+            Jugadores = new List<Jugador>();
+        }
 
         public Equipo(string nombre, byte[] escudo, Alineacion alineacion, Plantilla plantilla, int presupuesto, bool controladoPorUsuario)
         {
@@ -31,6 +36,7 @@ namespace Prueba1.Backend.Equipos
             Plantilla = plantilla;
             Presupuesto = presupuesto;
             ControladoPorUsuario = controladoPorUsuario;
+            Jugadores = new List<Jugador>();
         }
 
         public void CambiarAlineacion(Alineacion nuevaAlineacion)

@@ -11,11 +11,6 @@
   <ItemGroup>
     <None Remove="Images\fondo.jpg" />
     <None Remove="Images\Logo.jpg" />
-    <None Remove="Images\Shields\ChironaFCLogo.jpg" />
-    <None Remove="Images\Shields\CholoCFLogo.jpg" />
-    <None Remove="Images\Shields\GabarraFCLogo.jpg" />
-    <None Remove="Images\Shields\MasiaFCLogo.jpg" />
-    <None Remove="Images\Shields\MerengueCFLogo.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,11 +28,6 @@
     <Resource Include="Images\Logo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\Shields\ChironaFCLogo.jpg" />
-    <Resource Include="Images\Shields\CholoCFLogo.jpg" />
-    <Resource Include="Images\Shields\GabarraFCLogo.jpg" />
-    <Resource Include="Images\Shields\MasiaFCLogo.jpg" />
-    <Resource Include="Images\Shields\MerengueCFLogo.jpg" />
   </ItemGroup>
 
   <ItemGroup>
