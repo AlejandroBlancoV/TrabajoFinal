@@ -66,7 +66,7 @@
     FontFamily="Montserrat"
     Cursor="Hand"
     Grid.Column="1"
-    Click="btnMinimize_Click">
+    Click="btnMinimize_Click" Height="30" VerticalAlignment="Center">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#28AEED"/>

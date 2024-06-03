@@ -34,33 +34,74 @@ namespace Prueba1.Backend.Competiciones
         public int VisitanteId { get; set; }
         public Resultado Resultado { get; set; }
         public bool Jugado { get; set; }
+        public List<Jugada> Jugadas { get; set; }
 
 
         public static Partido SimularPartidoIA(Partido partido)
         {
-            int ProbabilidadLocal = 55;
-            
-            Equipo Local= partido.Local;
+            int ProbabilidadLocal = 35;
+            int ProbabilidadEmpate = 30;
+
+            Equipo Local = partido.Local;
             Equipo Visitante = partido.Visitante;
-            int mediaLocal= (int) Local.Alineacion.MediaMedia();
-            int mediaVisitante= (int) Visitante.Alineacion.MediaMedia();
-            int diferencia= mediaLocal - mediaVisitante;
-            if(diferencia>0){
-                ProbabilidadLocal+=(diferencia*2);
+            int mediaLocal = (int)Local.Alineacion.MediaMedia();
+            int mediaVisitante = (int)Visitante.Alineacion.MediaMedia();
+            int diferencia = Math.Abs(mediaLocal - mediaVisitante); 
+
+            
+            if (diferencia < 5)
+            {
+                
+                ProbabilidadEmpate += 10;
             }
-            else{
-                ProbabilidadLocal-= (diferencia * 2);
+            else if (diferencia < 10)
+            {
+                
+                ProbabilidadEmpate += 5;
             }
+            else
+            {
+                
+                ProbabilidadEmpate -= 5;
+            }
+
+            
+            if (mediaLocal > mediaVisitante)
+            {
+                ProbabilidadLocal += (diferencia * 2);
+            }
+            else
+            {
+                ProbabilidadLocal -= (diferencia * 2);
+            }
+
             Random rnd = new Random();
             int resultado = rnd.Next(0, 100);
-            if(resultado<=ProbabilidadLocal){
+            if (resultado <= ProbabilidadLocal)
+            {
+                // Gana el local
+                partido.Resultado.GolesLocal = rnd.Next(1, 5);
+                partido.Resultado.GolesVisitante = rnd.Next(0, partido.Resultado.GolesLocal);
+            }
+            else if (resultado <= ProbabilidadLocal + ProbabilidadEmpate)
+            {
+                // Empate
                 partido.Resultado.GolesLocal = rnd.Next(0, 5);
-                partido.Resultado.GolesVisitante = rnd.Next(0, partido.Resultado.GolesLocal-1);
+                partido.Resultado.GolesVisitante = partido.Resultado.GolesLocal;
             }
-            else{
-                partido.Resultado.GolesVisitante = rnd.Next(0, 5);
-                partido.Resultado.GolesLocal = rnd.Next(0, partido.Resultado.GolesVisitante-1);
+            else
+            {
+                // Gana el visitante
+                partido.Resultado.GolesVisitante = rnd.Next(1, 5);
+                partido.Resultado.GolesLocal = rnd.Next(0, partido.Resultado.GolesVisitante);
             }
+            return partido;
+        }
+
+        public static Partido SimularPartidoUser(Partido partido)
+        {
+
+
             return partido;
         }
 
