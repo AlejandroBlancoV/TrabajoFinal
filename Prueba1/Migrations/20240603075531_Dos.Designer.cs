@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Prueba1.Backend.BBDD;
 
@@ -11,9 +12,11 @@ using Prueba1.Backend.BBDD;
 namespace Prueba1.Migrations
 {
     [DbContext(typeof(MiContexto))]
-    partial class MiContextoModelSnapshot : ModelSnapshot
+    [Migration("20240603075531_Dos")]
+    partial class Dos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

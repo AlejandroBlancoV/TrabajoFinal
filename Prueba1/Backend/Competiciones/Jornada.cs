@@ -11,6 +11,11 @@ namespace Prueba1.Backend.Competiciones
         {
             Partidos = new List<Partido>();
         }
+
+        public Jornada(List<Partido> partidos)
+        {
+            Partidos = partidos;
+        }
     }
 }
 

@@ -16,6 +16,10 @@ namespace Prueba1.Backend.Competiciones
             Calendario = new Calendario(equipos);
         }
 
+        public Liga()
+        {
+        }
+
         public void OrganizarClasificacion()
         {
             Equipos = Equipos.OrderByDescending(e => e.Puntos)

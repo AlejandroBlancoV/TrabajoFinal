@@ -4,11 +4,16 @@ namespace Prueba1.Backend.Competiciones
 {
     public class Calendario
     {
+        public int Id { get; set; }
         public List<Jornada> Jornadas { get; set; }
 
         public Calendario(List<Equipo> equipos)
         {
             Jornadas = GenerarCalendario(equipos);
+        }
+
+        public Calendario()
+        {
         }
 
         private List<Jornada> GenerarCalendario(List<Equipo> equipos)
