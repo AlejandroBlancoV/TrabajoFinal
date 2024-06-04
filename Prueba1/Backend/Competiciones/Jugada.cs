@@ -8,7 +8,9 @@ public class Jugada
     public Equipo Atacante { get; set; }
     public Equipo Defensor { get; set; }
 
-
+    public Jugada()
+    {
+    }
 
     public Jugada(ZonaCampo zona, Equipo atacante, Equipo defensor)
     {

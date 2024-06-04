@@ -16,6 +16,7 @@ namespace Prueba1.Backend.BBDD
         public DbSet<Jornada> Jornadas { get; set; }
         public DbSet<Calendario> Calendarios { get; set; }
         public DbSet<Liga> Ligas { get; set; }
+        public DbSet<Jugada> Jugadas { get; set; } 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -37,10 +38,10 @@ namespace Prueba1.Backend.BBDD
                 .HasForeignKey(j => j.EquipoId);
 
             modelBuilder.Entity<Partido>()
-    .HasOne(p => p.Local)
-    .WithMany()
-    .HasForeignKey(p => p.LocalId)
-    .OnDelete(DeleteBehavior.NoAction);
+                .HasOne(p => p.Local)
+                .WithMany()
+                .HasForeignKey(p => p.LocalId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Partido>()
                 .HasOne(p => p.Visitante)
@@ -48,7 +49,18 @@ namespace Prueba1.Backend.BBDD
                 .HasForeignKey(p => p.VisitanteId)
                 .OnDelete(DeleteBehavior.NoAction);
 
+            
+            modelBuilder.Entity<Jugada>()
+                .HasOne(j => j.Atacante)
+                .WithMany()
+                .HasForeignKey("AtacanteId")
+                .OnDelete(DeleteBehavior.NoAction);
 
+            modelBuilder.Entity<Jugada>()
+                .HasOne(j => j.Defensor)
+                .WithMany()
+                .HasForeignKey("DefensorId")
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
