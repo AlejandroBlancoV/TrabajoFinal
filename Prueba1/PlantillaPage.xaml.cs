@@ -56,5 +56,10 @@ namespace Prueba1
             Application.Current.Shutdown();
         }
 
+        private void btnVolver_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new MenuInGamePage(_contexto));
+
+        }
     }
 }

@@ -128,14 +128,19 @@
 
                     </Button>
                 </Grid>
-                <ListView x:Name="lvJugadores" Grid.Row="1" Margin="104,41,104,41" Background="Transparent" BorderBrush="{StaticResource BorderBrushGradient}" BorderThickness="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+
+                <Image x:Name="imgAlineacion" Source="pack://application:,,,/Images/Shields/Novesuna-removebg-preview.png" Margin="301,0,379,441" Grid.Row="1"/>
+                <TextBlock Text="PLANTILLA" Foreground="White" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,29,331,0" Grid.Row="1"/>
+
+
+                <ListView x:Name="lvJugadores" Grid.Row="1" Margin="10,72,198,10" Background="Transparent" BorderBrush="{StaticResource BorderBrushGradient}" BorderThickness="1" d:ItemsSource="{d:SampleData ItemCount=5}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="ToolTip">
                                 <Setter.Value>
-                                    <ToolTip Background="#C62DAE" HasDropShadow="False">
+                                    <ToolTip Background="#312763" HasDropShadow="True" BorderBrush="{StaticResource BorderBrushGradient}" BorderThickness="1">
                                         <ToolTip.Content>
-                                            <Border Background="Transparent" CornerRadius="20" Width="180" Height="80">
+                                            <Border Width="180" Height="80">
                                                 <Grid>
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition/>
@@ -200,10 +205,39 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                <Button x:Name="btnVolver"
+    BorderThickness="0"
+    Content="VOLVER"
+    Foreground="White"
+    FontSize="15"
+    FontFamily="Montserrat"
+    Cursor="Hand"
+    Click="btnVolver_Click"
+    Margin="619,405,25,56" Grid.Row="1">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#462AD8"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#28AEED"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
 
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Width="150" Height="40"
+                CornerRadius="20"
+                Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
 
+                            </Border>
 
-
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
             </Grid>
         </Border>
     </Border>
