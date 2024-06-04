@@ -43,13 +43,13 @@ namespace Prueba1
 
         private void btnNuevaPartida_Click(object sender, RoutedEventArgs e)
         {
-            // Navega a la página MenuInGamePage
+           
             this.NavigationService.Navigate(new MenuInGamePage(_contexto));
         }
 
         private void btnConfiguracion_Click(object sender, RoutedEventArgs e)
         {
-            // Acción para configuración
+            
         }
 
         private void btnSalir_Click(object sender, RoutedEventArgs e)

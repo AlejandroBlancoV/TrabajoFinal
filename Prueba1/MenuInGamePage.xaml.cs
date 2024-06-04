@@ -44,19 +44,16 @@ namespace Prueba1
             MessageBox.Show(prueba.ToString());
         }
 
-        private void btnNuevaPartida_Click(object sender, RoutedEventArgs e)
-        {
-            // Acción para nueva partida
-        }
-
-        private void btnConfiguracion_Click(object sender, RoutedEventArgs e)
-        {
-            // Acción para configuración
-        }
+        
 
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void btnPlantilla_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new PlantillaPage(_contexto));
         }
     }
 }
