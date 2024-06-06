@@ -21,6 +21,11 @@ namespace Prueba1.Backend.Equipos
             this.jugadores = jugadores;
         }
 
+        public Plantilla(Jugador[] jugadores)
+        {
+            this.jugadores = jugadores;
+        }
+
         public void AgregarJugador(Jugador jugador)
         {
             if (jugadores.Contains(jugador))

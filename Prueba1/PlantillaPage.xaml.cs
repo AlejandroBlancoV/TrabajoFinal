@@ -37,6 +37,7 @@ namespace Prueba1
             lvJugadores.Items.Add(defensor);
             Portero portero = gestionJugadores.GeneraPortero();
             lvJugadores.Items.Add(portero);
+            this.Loaded += (s, e) => calcularValoresPlantilla();
         }
         private void Page_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -61,5 +62,49 @@ namespace Prueba1
             this.NavigationService.Navigate(new MenuInGamePage(_contexto));
 
         }
+        private void calcularValoresPlantilla()
+        {
+            double totalPlantilla = 0;
+            double totalSalarios = 0;
+            int totalEdad = 0;
+            int numPorteros = 0;
+            int numDefensas = 0;
+            int numMedios = 0;
+            int numDelanteros = 0;
+
+            foreach (Jugador jugador in lvJugadores.Items)
+            {
+                totalPlantilla += jugador.Valor; // Asume que la clase Jugador tiene una propiedad Valor
+                totalSalarios += jugador.Salario; // Asume que la clase Jugador tiene una propiedad Salario
+                totalEdad += jugador.Edad;
+
+                switch (jugador.Posicion)
+                {
+                    case Posicion.Portero:
+                        numPorteros++;
+                        break;
+                    case Posicion.Defensa:
+                        numDefensas++;
+                        break;
+                    case Posicion.Medio:
+                        numMedios++;
+                        break;
+                    case Posicion.Delantero:
+                        numDelanteros++;
+                        break;
+                }
+            }
+
+            double edadMedia = totalEdad / (double)lvJugadores.Items.Count;
+
+            txtTotalPlantilla.Text = $"Valor Plantilla: {totalPlantilla.ToString("N0")}€";
+            txtTotalSalarios.Text = $"Total Salarios: {totalSalarios.ToString("N0")}€";
+            txtEdadMedia.Text = $"Edad Media: {edadMedia.ToString("N1")}";
+            txtNumPorteros.Text = $"Nº Porteros: {numPorteros}";
+            txtNumDefensas.Text = $"Nº Defensas: {numDefensas}";
+            txtNumMedios.Text = $"Nº Medios: {numMedios}";
+            txtNumDelanteros.Text = $"Nº Delanteros: {numDelanteros}";
+        }
+
     }
 }
