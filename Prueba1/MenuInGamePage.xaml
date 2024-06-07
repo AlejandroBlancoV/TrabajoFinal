@@ -160,10 +160,10 @@
                         <TextBlock Grid.Column="0" Grid.Row="2" Text="Valoración media local" Foreground="White"/>
 
                         
-                        <Image Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Source="pack://application:,,,/Images/Shields/Viol-Encia-removebg-preview.png" Width="150" Height="90"/>
+                        <Image Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Source="pack://application:,,,/Images/Shields/Viol-EnciaCF.png" Width="150" Height="90"/>
 
                         
-                        <Image Grid.Column="3" Grid.Row="0" Grid.RowSpan="3" Source="pack://application:,,,/Images/Shields/MerengueCFLogo-removebg-preview.png" Width="150" Height="90"/>
+                        <Image Grid.Column="3" Grid.Row="0" Grid.RowSpan="3" Source="pack://application:,,,/Images/Shields/MerengueCF.png" Width="150" Height="90"/>
 
                         
                         <TextBlock Grid.Column="4" Grid.Row="0" Text="Nombre del equipo visitante" Foreground="White"/>
