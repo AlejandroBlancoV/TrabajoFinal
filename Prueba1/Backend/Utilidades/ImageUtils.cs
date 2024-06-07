@@ -23,6 +23,20 @@ namespace Prueba1.Backend.Utilidades
             image.Freeze();
             return image;
         }
+        public static byte[] ConvertirImagenAEscudo(BitmapImage image)
+        {
+            if (image == null) return null;
+
+            var encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(image));
+
+            using (var mem = new MemoryStream())
+            {
+                encoder.Save(mem);
+                return mem.ToArray();
+            }
+        }
+
     }
 
 }

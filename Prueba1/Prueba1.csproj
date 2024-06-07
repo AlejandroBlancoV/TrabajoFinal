@@ -15,14 +15,23 @@
     <None Remove="Images\fondo.jpg" />
     <None Remove="Images\Logo.jpg" />
     <None Remove="Images\Shields\CANovesuna.png" />
+    <None Remove="Images\Shields\CedillaCF.png" />
     <None Remove="Images\Shields\ChironaFC.png" />
     <None Remove="Images\Shields\CholoCF.png" />
+    <None Remove="Images\Shields\CálizCF.png" />
     <None Remove="Images\Shields\DeportivoPalaves.png" />
+    <None Remove="Images\Shields\FrenadaCF.png" />
     <None Remove="Images\Shields\GabarraFC.png" />
+    <None Remove="Images\Shields\GalloVallecano.png" />
     <None Remove="Images\Shields\MerengueCF.png" />
+    <None Remove="Images\Shields\RCCruelta.png" />
+    <None Remove="Images\Shields\RCDCayorca.png" />
     <None Remove="Images\Shields\RealB.E.T.I.S.png" />
     <None Remove="Images\Shields\RealSuciedad.png" />
+    <None Remove="Images\Shields\SetafeCF.png" />
     <None Remove="Images\Shields\SpotYfaiMasiaFC.png" />
+    <None Remove="Images\Shields\UDAlegría.png" />
+    <None Remove="Images\Shields\UDLaPalmas.png" />
     <None Remove="Images\Shields\VallaRealCF.png" />
     <None Remove="Images\Shields\Viol-EnciaCF.png" />
   </ItemGroup>
@@ -51,6 +60,24 @@
     <Resource Include="Images\Logo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\Shields\CedillaCF.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Shields\CálizCF.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Shields\FrenadaCF.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Shields\GalloVallecano.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Shields\RCCruelta.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Shields\RCDCayorca.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Shields\RealB.E.T.I.S.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -61,6 +88,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Shields\GabarraFC.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Shields\SetafeCF.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Shields\SpotYfaiMasiaFC.png">
@@ -76,6 +106,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Shields\RealSuciedad.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Shields\UDAlegría.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Shields\UDLaPalmas.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Shields\VallaRealCF.png">
