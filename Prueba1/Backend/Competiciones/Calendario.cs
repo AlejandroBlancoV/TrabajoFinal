@@ -22,7 +22,7 @@ namespace Prueba1.Backend.Competiciones
 
             if (equipos.Count % 2 != 0)
             {
-                equipos.Add(null); // Si el número de equipos es impar, añade un "equipo fantasma"
+                equipos.Add(null); 
             }
 
             for (int jornada = 0; jornada < equipos.Count - 1; jornada++)
@@ -34,7 +34,7 @@ namespace Prueba1.Backend.Competiciones
                     int equipoLocal = (jornada + equipo) % (equipos.Count - 1);
                     int equipoVisitante = (equipos.Count - 1 - equipo + jornada) % (equipos.Count - 1);
 
-                    // El último equipo se queda en su lugar mientras los otros rotan
+                    
                     if (equipo == 0)
                     {
                         equipoVisitante = equipos.Count - 1;

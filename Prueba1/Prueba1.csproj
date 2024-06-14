@@ -27,7 +27,7 @@
     <None Remove="Images\Shields\RCCruelta.png" />
     <None Remove="Images\Shields\RCDCayorca.png" />
     <None Remove="Images\Shields\RealB.E.T.I.S.png" />
-    <None Remove="Images\Shields\RealSuciedad.png" />
+    <None Remove="Images\Shields\RealSuciedadCF.png" />
     <None Remove="Images\Shields\SetafeCF.png" />
     <None Remove="Images\Shields\SpotYfaiMasiaFC.png" />
     <None Remove="Images\Shields\UDAlegría.png" />
@@ -105,7 +105,7 @@
     <Resource Include="Images\Shields\DeportivoPalaves.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\Shields\RealSuciedad.png">
+    <Resource Include="Images\Shields\RealSuciedadCF.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Shields\UDAlegría.png">
