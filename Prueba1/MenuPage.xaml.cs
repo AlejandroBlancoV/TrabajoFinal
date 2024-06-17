@@ -10,10 +10,12 @@ namespace Prueba1
     public partial class MenuPage : Page
     {
         private readonly MiContexto _contexto;
+        GestionPartidas gestionPartidas = new GestionPartidas();
         public MenuPage(MiContexto contexto)
         {
             InitializeComponent();
             _contexto = contexto;
+            
         }
 
         private void Page_MouseDown(object sender, MouseButtonEventArgs e)
@@ -33,6 +35,7 @@ namespace Prueba1
         {
             Application.Current.Shutdown();
         }
+        
 
         private void btnContinuar_Click(object sender, RoutedEventArgs e)
         {
@@ -43,8 +46,11 @@ namespace Prueba1
 
         private void btnNuevaPartida_Click(object sender, RoutedEventArgs e)
         {
-           
-            this.NavigationService.Navigate(new MenuInGamePage(_contexto));
+
+            LimpiarDatos(_contexto);
+            gestionPartidas.crearPartida();
+            _contexto.SaveChanges();
+            //this.NavigationService.Navigate(new MenuInGamePage(_contexto));
         }
 
         private void btnConfiguracion_Click(object sender, RoutedEventArgs e)
@@ -56,5 +62,25 @@ namespace Prueba1
         {
             Application.Current.Shutdown();
         }
+        public void LimpiarDatos(MiContexto contexto)
+        {
+            contexto.Jugadas.RemoveRange(contexto.Jugadas);
+            contexto.Resultados.RemoveRange(contexto.Resultados);
+            contexto.Partidos.RemoveRange(contexto.Partidos);
+            contexto.Jornadas.RemoveRange(contexto.Jornadas);
+            contexto.Calendarios.RemoveRange(contexto.Calendarios);
+            contexto.Ligas.RemoveRange(contexto.Ligas);
+
+            
+            
+            contexto.Jugadores.RemoveRange(contexto.Jugadores);
+            contexto.Plantillas.RemoveRange(contexto.Plantillas); 
+            contexto.Equipos.RemoveRange(contexto.Equipos);
+            contexto.Alineaciones.RemoveRange(contexto.Alineaciones); 
+
+            contexto.SaveChanges();
+        }
+
+
     }
 }
