@@ -50,7 +50,7 @@ namespace Prueba1
             LimpiarDatos(_contexto);
             gestionPartidas.crearPartida();
             _contexto.SaveChanges();
-            //this.NavigationService.Navigate(new MenuInGamePage(_contexto));
+            this.NavigationService.Navigate(new EscogeEquipo(_contexto));
         }
 
         private void btnConfiguracion_Click(object sender, RoutedEventArgs e)

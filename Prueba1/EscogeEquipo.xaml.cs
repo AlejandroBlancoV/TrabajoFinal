@@ -1,4 +1,5 @@
-﻿using Prueba1.Backend.BBDD;
+﻿using Microsoft.EntityFrameworkCore;
+using Prueba1.Backend.BBDD;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,27 @@ namespace Prueba1
     /// </summary>
     public partial class EscogeEquipo : Page
     {
-        MiContexto _contexto;
+        private MiContexto _contexto;
+
         public EscogeEquipo(MiContexto contexto)
         {
             InitializeComponent();
             _contexto = contexto;
+            CargarEquiposAsync();
+        }
+
+        private async void CargarEquiposAsync()
+        {
+            try
+            {
+                var equipos = await _contexto.Equipos.ToListAsync();
+                lvEquipos.ItemsSource = equipos;
+            }
+            catch (Exception ex)
+            {
+                
+                MessageBox.Show($"Error al cargar equipos: {ex.Message}");
+            }
         }
         private void Page_MouseDown(object sender, MouseButtonEventArgs e)
         {

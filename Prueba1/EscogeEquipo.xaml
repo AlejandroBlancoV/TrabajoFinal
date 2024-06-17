@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:convertidores="clr-namespace:Prueba1.Convertidores"
       mc:Ignorable="d"
       Title="PlantillaPage"
       Background="Transparent" Height="550" Width="800"
@@ -18,6 +19,7 @@
             <GradientStop Color="#060531" Offset="0"/>
             <GradientStop Color="#1B1448" Offset="0.75"/>
         </LinearGradientBrush>
+        <convertidores:EscudoAImagenConverter x:Key="EscudoAImagenConverter"/>
     </Page.Resources>
 
     <Border CornerRadius="12">
@@ -130,16 +132,16 @@
                 </Grid>
 
 
-                <ListView x:Name="lvEquipos" Margin="10,37,10,72" Background="Transparent" BorderBrush="{StaticResource BorderBrushGradient}" BorderThickness="1">
+                <ListView x:Name="lvEquipos" Margin="10,34,10,67" Background="Transparent" BorderBrush="{StaticResource BorderBrushGradient}" BorderThickness="1" Grid.Row="1">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <Image Width="50" Height="50" Margin="5">
                                     <Image.Source>
-                                        <!-- Utiliza el método ConvertirEscudoAImagen para convertir el array de bytes a una imagen -->
-                                        <Binding Path="Escudo" Converter="{StaticResource ByteToImageConverter}"/>
+                                        <Binding Path="Escudo" Converter="{StaticResource EscudoAImagenConverter}"/>
                                     </Image.Source>
                                 </Image>
+
                                 <TextBlock Text="{Binding Nombre}" VerticalAlignment="Center" Margin="10,0" FontSize="16"/>
                                 <!-- Aquí puedes agregar la lógica para mostrar una valoración media del equipo -->
                                 <TextBlock Text="{Binding ValoracionMedia}" VerticalAlignment="Center" Margin="10,0" FontSize="16"/>
@@ -158,7 +160,7 @@
     FontFamily="Montserrat"
     Cursor="Hand"
     Click="btnVolver_Click"
-    Margin="634,451,10,10" Grid.Row="1">
+    Margin="10,451,634,10" Grid.Row="1">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="#462AD8"/>
@@ -191,7 +193,7 @@
                     FontFamily="Montserrat"
                     Cursor="Hand"
                     Click="btnVolver_Click"
-                    Margin="10,451,634,10" Grid.Row="1">
+                    Margin="634,451,10,10" Grid.Row="1">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="#462AD8"/>

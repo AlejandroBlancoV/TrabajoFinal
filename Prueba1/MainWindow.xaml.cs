@@ -29,11 +29,11 @@ namespace Prueba1
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // Obtener el tamaño de la pantalla
+            
             double screenWidth = SystemParameters.PrimaryScreenWidth;
             double screenHeight = SystemParameters.PrimaryScreenHeight;
 
-            // Establecer el tamaño de la ventana
+            
             Width = screenWidth;
             Height = screenHeight;
         }
