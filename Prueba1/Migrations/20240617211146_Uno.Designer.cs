@@ -12,8 +12,8 @@ using Prueba1.Backend.BBDD;
 namespace Prueba1.Migrations
 {
     [DbContext(typeof(MiContexto))]
-    [Migration("20240531080631_Primera")]
-    partial class Primera
+    [Migration("20240617211146_Uno")]
+    partial class Uno
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,145 @@ namespace Prueba1.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Jugada", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AtacanteId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DefensorId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PartidoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Zona")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AtacanteId");
+
+                    b.HasIndex("DefensorId");
+
+                    b.HasIndex("PartidoId");
+
+                    b.ToTable("Jugadas");
+                });
+
+            modelBuilder.Entity("Prueba1.Backend.Competiciones.Calendario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Calendarios");
+                });
+
+            modelBuilder.Entity("Prueba1.Backend.Competiciones.Jornada", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CalendarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CalendarioId");
+
+                    b.ToTable("Jornadas");
+                });
+
+            modelBuilder.Entity("Prueba1.Backend.Competiciones.Liga", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CalendarioId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CalendarioId");
+
+                    b.ToTable("Ligas");
+                });
+
+            modelBuilder.Entity("Prueba1.Backend.Competiciones.Partido", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("JornadaId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Jugado")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("LocalId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ResultadoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VisitanteId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JornadaId");
+
+                    b.HasIndex("LocalId");
+
+                    b.HasIndex("ResultadoId");
+
+                    b.HasIndex("VisitanteId");
+
+                    b.ToTable("Partidos");
+                });
+
+            modelBuilder.Entity("Prueba1.Backend.Competiciones.Resultado", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("GolesLocal")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GolesVisitante")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Resultados");
+                });
 
             modelBuilder.Entity("Prueba1.Backend.Equipos.Alineacion", b =>
                 {
@@ -68,6 +207,9 @@ namespace Prueba1.Migrations
                     b.Property<int>("GolesEnContra")
                         .HasColumnType("int");
 
+                    b.Property<int?>("LigaId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -94,6 +236,8 @@ namespace Prueba1.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LigaId");
 
                     b.ToTable("Equipos");
                 });
@@ -214,6 +358,78 @@ namespace Prueba1.Migrations
                     b.HasDiscriminator().HasValue("Portero");
                 });
 
+            modelBuilder.Entity("Jugada", b =>
+                {
+                    b.HasOne("Prueba1.Backend.Equipos.Equipo", "Atacante")
+                        .WithMany()
+                        .HasForeignKey("AtacanteId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Prueba1.Backend.Equipos.Equipo", "Defensor")
+                        .WithMany()
+                        .HasForeignKey("DefensorId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Prueba1.Backend.Competiciones.Partido", null)
+                        .WithMany("Jugadas")
+                        .HasForeignKey("PartidoId");
+
+                    b.Navigation("Atacante");
+
+                    b.Navigation("Defensor");
+                });
+
+            modelBuilder.Entity("Prueba1.Backend.Competiciones.Jornada", b =>
+                {
+                    b.HasOne("Prueba1.Backend.Competiciones.Calendario", null)
+                        .WithMany("Jornadas")
+                        .HasForeignKey("CalendarioId");
+                });
+
+            modelBuilder.Entity("Prueba1.Backend.Competiciones.Liga", b =>
+                {
+                    b.HasOne("Prueba1.Backend.Competiciones.Calendario", "Calendario")
+                        .WithMany()
+                        .HasForeignKey("CalendarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Calendario");
+                });
+
+            modelBuilder.Entity("Prueba1.Backend.Competiciones.Partido", b =>
+                {
+                    b.HasOne("Prueba1.Backend.Competiciones.Jornada", null)
+                        .WithMany("Partidos")
+                        .HasForeignKey("JornadaId");
+
+                    b.HasOne("Prueba1.Backend.Equipos.Equipo", "Local")
+                        .WithMany()
+                        .HasForeignKey("LocalId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Prueba1.Backend.Competiciones.Resultado", "Resultado")
+                        .WithMany()
+                        .HasForeignKey("ResultadoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Prueba1.Backend.Equipos.Equipo", "Visitante")
+                        .WithMany()
+                        .HasForeignKey("VisitanteId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Local");
+
+                    b.Navigation("Resultado");
+
+                    b.Navigation("Visitante");
+                });
+
             modelBuilder.Entity("Prueba1.Backend.Equipos.Alineacion", b =>
                 {
                     b.HasOne("Prueba1.Backend.Equipos.Equipo", null)
@@ -221,6 +437,13 @@ namespace Prueba1.Migrations
                         .HasForeignKey("Prueba1.Backend.Equipos.Alineacion", "EquipoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Prueba1.Backend.Equipos.Equipo", b =>
+                {
+                    b.HasOne("Prueba1.Backend.Competiciones.Liga", null)
+                        .WithMany("Equipos")
+                        .HasForeignKey("LigaId");
                 });
 
             modelBuilder.Entity("Prueba1.Backend.Equipos.Plantilla", b =>
@@ -245,6 +468,26 @@ namespace Prueba1.Migrations
                         .IsRequired();
 
                     b.Navigation("Equipo");
+                });
+
+            modelBuilder.Entity("Prueba1.Backend.Competiciones.Calendario", b =>
+                {
+                    b.Navigation("Jornadas");
+                });
+
+            modelBuilder.Entity("Prueba1.Backend.Competiciones.Jornada", b =>
+                {
+                    b.Navigation("Partidos");
+                });
+
+            modelBuilder.Entity("Prueba1.Backend.Competiciones.Liga", b =>
+                {
+                    b.Navigation("Equipos");
+                });
+
+            modelBuilder.Entity("Prueba1.Backend.Competiciones.Partido", b =>
+                {
+                    b.Navigation("Jugadas");
                 });
 
             modelBuilder.Entity("Prueba1.Backend.Equipos.Alineacion", b =>
