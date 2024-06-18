@@ -56,6 +56,10 @@ namespace Prueba1.Backend.Equipos
         {
             return jugadores.Where(j => j != null).Average(j => j.Edad);
         }
+        public int ObtenerMediaMedia()
+        {
+            return jugadores.Where(j => j != null).Sum(j => j.Media) / CantidadJugadores();
+        }
 
         public int ObtenerValorTotal()
         {

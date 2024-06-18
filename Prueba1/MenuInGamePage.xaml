@@ -135,37 +135,37 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
-                            
+
                             <ColumnDefinition/>
-                            
+
                             <ColumnDefinition Width="20"/>
-                           
+
                             <ColumnDefinition/>
-                            
+
                             <ColumnDefinition/>
-                            
+
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
-                            
+
                             <RowDefinition/>
-                            
+
                             <RowDefinition/>
-                            
+
                         </Grid.RowDefinitions>
 
-                        
-                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Nombre del equipo local" Foreground="White"/>
-                        <TextBlock Grid.Column="0" Grid.Row="1" Text="Posición en la liga local" Foreground="White"/>
-                        <TextBlock Grid.Column="0" Grid.Row="2" Text="Valoración media local" Foreground="White"/>
 
-                        
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Nombre del equipo local" Foreground="White" Grid.ColumnSpan="2" Margin="10,0,182,0"/>
+                        <TextBlock Grid.Column="0" Text="Posición en la liga local" Foreground="White" Grid.ColumnSpan="2" Margin="10,31,181,31" Grid.RowSpan="3"/>
+                        <TextBlock Grid.Column="0" Grid.Row="2" Text="Valoración media local" Foreground="White" Grid.ColumnSpan="2" Margin="10,0,182,0"/>
+
+
                         <Image Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Source="pack://application:,,,/Images/Shields/Viol-EnciaCF.png" Width="150" Height="90"/>
 
-                        
+
                         <Image Grid.Column="3" Grid.Row="0" Grid.RowSpan="3" Source="pack://application:,,,/Images/Shields/MerengueCF.png" Width="150" Height="90"/>
 
-                        
+
                         <TextBlock Grid.Column="4" Grid.Row="0" Text="Nombre del equipo visitante" Foreground="White"/>
                         <TextBlock Grid.Column="4" Grid.Row="1" Text="Posición en la liga visitante" Foreground="White"/>
                         <TextBlock Grid.Column="4" Grid.Row="2" Text="Valoración media visitante" Foreground="White"/>

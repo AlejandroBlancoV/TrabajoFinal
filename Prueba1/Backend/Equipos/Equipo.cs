@@ -83,6 +83,10 @@ namespace Prueba1.Backend.Equipos
         {
             return Alineacion.SalarioTotal();
         }
+        public int ObtenerMediaMediaPlantilla()
+        {
+            return Plantilla.ObtenerMediaMedia();
+        }
 
         public void CambiarJugadorEnAlineacion(Jugador jugadorFuera, Jugador jugadorDentro)
         {
