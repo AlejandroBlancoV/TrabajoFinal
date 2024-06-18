@@ -20,6 +20,7 @@
             <GradientStop Color="#1B1448" Offset="0.75"/>
         </LinearGradientBrush>
         <convertidores:EscudoAImagenConverter x:Key="EscudoAImagenConverter"/>
+        <convertidores:StringToUpperConverter x:Key="StringToUpperConverter"/>
     </Page.Resources>
 
     <Border CornerRadius="12">
@@ -131,23 +132,22 @@
                     </Button>
                 </Grid>
 
-
+                
                 <ListView x:Name="lvEquipos" Margin="10,34,10,67" Background="Transparent" BorderBrush="{StaticResource BorderBrushGradient}" BorderThickness="1" Grid.Row="1">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <Image Width="50" Height="50" Margin="5">
                                     <Image.Source>
-                                        <Binding Path="Escudo" Converter="{StaticResource EscudoAImagenConverter}"/>
+                                        <Binding Path="Equipo.Escudo" Converter="{StaticResource EscudoAImagenConverter}"/>
                                     </Image.Source>
                                 </Image>
-
-                                <TextBlock Text="{Binding Nombre}" VerticalAlignment="Center" Margin="10,0" FontSize="16"/>
-                                <!-- Aquí puedes agregar la lógica para mostrar una valoración media del equipo -->
-                                <TextBlock Text="{Binding ValoracionMedia}" VerticalAlignment="Center" Margin="10,0" FontSize="16"/>
+                                <TextBlock Text="{Binding Equipo.Nombre, Converter={StaticResource StringToUpperConverter}}" VerticalAlignment="Center" Margin="10,0" FontSize="16" Foreground="White"/>
+                                <TextBlock Text="{Binding ValoracionMedia}" VerticalAlignment="Center" Margin="10,0" FontSize="16" Foreground="#ff54e0"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
+
                 </ListView>
 
 
@@ -185,15 +185,15 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button x:Name="btnVender"
-                    BorderThickness="0"
-                    Content="VENDER"
-                    Foreground="White"
-                    FontSize="15"
-                    FontFamily="Montserrat"
-                    Cursor="Hand"
-                    Click="btnVolver_Click"
-                    Margin="634,451,10,10" Grid.Row="1">
+                <Button x:Name="btnSeleccionar"
+        BorderThickness="0"
+        Content="SELECCIONAR"
+        Foreground="White"
+        FontSize="15"
+        FontFamily="Montserrat"
+        Cursor="Hand"
+        Click="btnSeleccionar_Click"
+        Margin="634,451,10,10" Grid.Row="1">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="#462AD8"/>

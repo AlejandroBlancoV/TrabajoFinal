@@ -5,7 +5,7 @@
 namespace Prueba1.Migrations
 {
     /// <inheritdoc />
-    public partial class Uno : Migration
+    public partial class Primera : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,6 +20,19 @@ namespace Prueba1.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Calendarios", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Plantillas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EquipoId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Plantillas", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -163,25 +176,6 @@ namespace Prueba1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Plantillas",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EquipoId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Plantillas", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Plantillas_Equipos_EquipoId",
-                        column: x => x.EquipoId,
-                        principalTable: "Equipos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Jugadores",
                 columns: table => new
                 {
@@ -201,6 +195,7 @@ namespace Prueba1.Migrations
                     Disparo = table.Column<int>(type: "int", nullable: false),
                     Paradas = table.Column<int>(type: "int", nullable: false),
                     AlineacionId = table.Column<int>(type: "int", nullable: true),
+                    EquipoId1 = table.Column<int>(type: "int", nullable: true),
                     TipoJugador = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false)
                 },
                 constraints: table =>
@@ -217,6 +212,11 @@ namespace Prueba1.Migrations
                         principalTable: "Equipos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Jugadores_Equipos_EquipoId1",
+                        column: x => x.EquipoId1,
+                        principalTable: "Equipos",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -292,6 +292,11 @@ namespace Prueba1.Migrations
                 column: "EquipoId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Jugadores_EquipoId1",
+                table: "Jugadores",
+                column: "EquipoId1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Ligas_CalendarioId",
                 table: "Ligas",
                 column: "CalendarioId");
@@ -315,12 +320,6 @@ namespace Prueba1.Migrations
                 name: "IX_Partidos_VisitanteId",
                 table: "Partidos",
                 column: "VisitanteId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Plantillas_EquipoId",
-                table: "Plantillas",
-                column: "EquipoId",
-                unique: true);
         }
 
         /// <inheritdoc />

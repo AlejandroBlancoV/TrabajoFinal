@@ -15,11 +15,11 @@
     <None Remove="Images\Estadio3.png" />
     <None Remove="Images\fondo.jpg" />
     <None Remove="Images\Logo.jpg" />
+    <None Remove="Images\Shields\CalizCF.png" />
     <None Remove="Images\Shields\CANovesuna.png" />
     <None Remove="Images\Shields\CedillaCF.png" />
     <None Remove="Images\Shields\ChironaFC.png" />
     <None Remove="Images\Shields\CholoCF.png" />
-    <None Remove="Images\Shields\CálizCF.png" />
     <None Remove="Images\Shields\DeportivoPalaves.png" />
     <None Remove="Images\Shields\FrenadaCF.png" />
     <None Remove="Images\Shields\GabarraFC.png" />
@@ -31,7 +31,7 @@
     <None Remove="Images\Shields\RealSuciedadCF.png" />
     <None Remove="Images\Shields\SetafeCF.png" />
     <None Remove="Images\Shields\SpotYfaiMasiaFC.png" />
-    <None Remove="Images\Shields\UDAlegría.png" />
+    <None Remove="Images\Shields\UDAlegria.png" />
     <None Remove="Images\Shields\UDLaPalmas.png" />
     <None Remove="Images\Shields\VallaRealCF.png" />
     <None Remove="Images\Shields\Viol-EnciaCF.png" />
@@ -65,7 +65,7 @@
     <Resource Include="Images\Shields\CedillaCF.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\Shields\CálizCF.png">
+    <Resource Include="Images\Shields\CalizCF.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Shields\FrenadaCF.png">
@@ -110,7 +110,7 @@
     <Resource Include="Images\Shields\RealSuciedadCF.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\Shields\UDAlegría.png">
+    <Resource Include="Images\Shields\UDAlegria.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Shields\UDLaPalmas.png">
@@ -131,6 +131,10 @@
     <None Update="Nombres.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

@@ -1,10 +1,18 @@
-﻿using Prueba1.Backend.Equipos;
+﻿using Prueba1.Backend.BBDD;
+using Prueba1.Backend.Equipos;
 using Prueba1.Backend.Jugadores;
 namespace Prueba1.Backend.Gestion
 {
     internal class GestionJugadores
     {
-        GestionNombres gestionNombres = new GestionNombres();
+        GestionNombres gestionNombres;
+        MiContexto contexto;
+
+        public GestionJugadores(MiContexto contexto)
+        {
+            this.contexto = contexto;
+            this.gestionNombres = new GestionNombres();
+        }
 
         public Portero GeneraPortero() {             
             string nombre = gestionNombres.GenerarNombreAleatorio();

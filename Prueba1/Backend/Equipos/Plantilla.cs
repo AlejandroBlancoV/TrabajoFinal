@@ -1,8 +1,9 @@
 ﻿using Prueba1.Backend.Jugadores;
+using System.Collections;
 
 namespace Prueba1.Backend.Equipos
 {
-    public class Plantilla
+    public class Plantilla : IEnumerable<Jugador>
     {
         public int Id { get; set; }
         public int EquipoId { get; set; }
@@ -119,8 +120,17 @@ namespace Prueba1.Backend.Equipos
             return jugadores.OrderByDescending(j => j.Posicion).ToArray();
         }
 
+        public IEnumerator<Jugador> GetEnumerator()
+        {
+            foreach (var jugador in jugadores)
+            {
+                yield return jugador;
+            }
+        }
 
-
-
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }

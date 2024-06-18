@@ -35,15 +35,24 @@ namespace Prueba1
         {
             try
             {
-                var equipos = await _contexto.Equipos.ToListAsync();
-                lvEquipos.ItemsSource = equipos;
+                var equiposConMedia = await _contexto.Equipos.Include(e => e.Jugadores).Select(equipo => new
+                {
+                    EquipoId = equipo.Id, // Incluye el Id del equipo aquí
+                    Equipo = equipo,
+                    ValoracionMedia = (int)Math.Round(equipo.Jugadores.Any() ? equipo.Jugadores.Average(j => j.Media) : 0)
+                }).ToListAsync();
+
+                lvEquipos.ItemsSource = equiposConMedia;
             }
             catch (Exception ex)
             {
-                
                 MessageBox.Show($"Error al cargar equipos: {ex.Message}");
             }
         }
+
+
+
+
         private void Page_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -67,5 +76,28 @@ namespace Prueba1
             this.NavigationService.Navigate(new MenuInGamePage(_contexto));
 
         }
+
+        private async void btnSeleccionar_Click(object sender, RoutedEventArgs e)
+        {
+            if (lvEquipos.SelectedItem != null)
+            {
+                dynamic equipoSeleccionado = lvEquipos.SelectedItem;
+                int equipoId = equipoSeleccionado.EquipoId;
+                var equipo = await _contexto.Equipos.FindAsync(equipoId);
+                if (equipo != null)
+                {
+                    equipo.ControladoPorUsuario = true;
+                    equipo.Presupuesto = 50000000;
+                    await _contexto.SaveChangesAsync(); 
+                    MessageBox.Show($"El equipo {equipo.Nombre} ha sido seleccionado como controlado por el usuario.");
+                    this.NavigationService.Navigate(new MenuInGamePage(_contexto));
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona un equipo de la lista.");
+            }
+        }
+
     }
 }

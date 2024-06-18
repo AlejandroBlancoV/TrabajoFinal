@@ -252,9 +252,6 @@ namespace Prueba1.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EquipoId")
-                        .IsUnique();
-
                     b.ToTable("Plantillas");
                 });
 
@@ -279,6 +276,9 @@ namespace Prueba1.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("EquipoId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("EquipoId1")
                         .HasColumnType("int");
 
                     b.Property<int>("Fisico")
@@ -319,6 +319,8 @@ namespace Prueba1.Migrations
                     b.HasIndex("AlineacionId");
 
                     b.HasIndex("EquipoId");
+
+                    b.HasIndex("EquipoId1");
 
                     b.ToTable("Jugadores");
 
@@ -443,15 +445,6 @@ namespace Prueba1.Migrations
                         .HasForeignKey("LigaId");
                 });
 
-            modelBuilder.Entity("Prueba1.Backend.Equipos.Plantilla", b =>
-                {
-                    b.HasOne("Prueba1.Backend.Equipos.Equipo", null)
-                        .WithOne("Plantilla")
-                        .HasForeignKey("Prueba1.Backend.Equipos.Plantilla", "EquipoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Prueba1.Backend.Jugadores.Jugador", b =>
                 {
                     b.HasOne("Prueba1.Backend.Equipos.Alineacion", null)
@@ -463,6 +456,10 @@ namespace Prueba1.Migrations
                         .HasForeignKey("EquipoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Prueba1.Backend.Equipos.Equipo", null)
+                        .WithMany("Plantilla")
+                        .HasForeignKey("EquipoId1");
 
                     b.Navigation("Equipo");
                 });
@@ -499,8 +496,7 @@ namespace Prueba1.Migrations
 
                     b.Navigation("Jugadores");
 
-                    b.Navigation("Plantilla")
-                        .IsRequired();
+                    b.Navigation("Plantilla");
                 });
 #pragma warning restore 612, 618
         }

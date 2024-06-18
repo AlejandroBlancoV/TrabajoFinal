@@ -10,11 +10,12 @@ namespace Prueba1
     public partial class MenuPage : Page
     {
         private readonly MiContexto _contexto;
-        GestionPartidas gestionPartidas = new GestionPartidas();
+        GestionPartidas gestionPartidas;
         public MenuPage(MiContexto contexto)
         {
             InitializeComponent();
             _contexto = contexto;
+            gestionPartidas = new GestionPartidas(_contexto);
             
         }
 
@@ -39,9 +40,9 @@ namespace Prueba1
 
         private void btnContinuar_Click(object sender, RoutedEventArgs e)
         {
-            GestionJugadores gestionJugadores = new GestionJugadores();
+            /*GestionJugadores gestionJugadores = new GestionJugadores();
             Delantero prueba= gestionJugadores.GeneraDelantero();
-            MessageBox.Show(prueba.ToString());
+            MessageBox.Show(prueba.ToString());*/
         }
 
         private void btnNuevaPartida_Click(object sender, RoutedEventArgs e)

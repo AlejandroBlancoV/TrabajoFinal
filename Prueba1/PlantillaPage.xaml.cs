@@ -24,20 +24,11 @@ namespace Prueba1
     public partial class PlantillaPage : Page
     {
         private readonly MiContexto _contexto;
-        public PlantillaPage(Backend.BBDD.MiContexto _contexto)
+        public PlantillaPage(MiContexto contexto)
         {
             InitializeComponent();
-            this._contexto = _contexto;
-            GestionJugadores gestionJugadores = new GestionJugadores();
-            Delantero delantero = gestionJugadores.GeneraDelantero();
-            lvJugadores.Items.Add(delantero);
-            Medio medio = gestionJugadores.GeneraMedio();
-            lvJugadores.Items.Add(medio);
-            Defensor defensor = gestionJugadores.GeneraDefensa();
-            lvJugadores.Items.Add(defensor);
-            Portero portero = gestionJugadores.GeneraPortero();
-            lvJugadores.Items.Add(portero);
-            this.Loaded += (s, e) => calcularValoresPlantilla();
+            this._contexto = contexto;
+           
         }
         private void Page_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -64,7 +55,7 @@ namespace Prueba1
         }
         private void calcularValoresPlantilla()
         {
-            double totalPlantilla = 0;
+           /* double totalPlantilla = 0;
             double totalSalarios = 0;
             int totalEdad = 0;
             int numPorteros = 0;
@@ -103,7 +94,7 @@ namespace Prueba1
             txtNumPorteros.Text = $"Nº Porteros: {numPorteros}";
             txtNumDefensas.Text = $"Nº Defensas: {numDefensas}";
             txtNumMedios.Text = $"Nº Medios: {numMedios}";
-            txtNumDelanteros.Text = $"Nº Delanteros: {numDelanteros}";
+            txtNumDelanteros.Text = $"Nº Delanteros: {numDelanteros}";*/
         }
 
     }
