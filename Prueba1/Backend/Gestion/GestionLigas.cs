@@ -19,8 +19,19 @@ namespace Prueba1.Backend.Gestion
             Liga liga = new Liga();
             liga.Nombre = "La Liga";
             List<Equipo> equipos = gestionEquipos.GenerarEquiposLiga();
+          
+            Calendario calendario = new Calendario();
+            contexto.Calendarios.Add(calendario);
+            calendario.Jornadas = calendario.GenerarCalendario(equipos, contexto);
+           
+            contexto.SaveChanges(); 
+            liga.Calendario = calendario;
             liga.Equipos = equipos;
+            contexto.Ligas.Add(liga);
+            contexto.SaveChanges(); 
+
             return liga;
         }
+
     }
 }

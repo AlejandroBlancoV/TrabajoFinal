@@ -1,3 +1,4 @@
+using Prueba1.Backend.BBDD;
 using Prueba1.Backend.Equipos;
 
 namespace Prueba1.Backend.Competiciones
@@ -9,11 +10,11 @@ namespace Prueba1.Backend.Competiciones
         public List<Equipo> Equipos { get; set; }
         public Calendario Calendario { get; set; }
 
-        public Liga(string nombre, List<Equipo> equipos)
+        public Liga(string nombre, List<Equipo> equipos,MiContexto contexto)
         {
             Nombre = nombre;
             Equipos = equipos;
-            Calendario = new Calendario(equipos);
+            Calendario = new Calendario(equipos, contexto);
         }
 
         public Liga()
@@ -25,6 +26,10 @@ namespace Prueba1.Backend.Competiciones
             Equipos = Equipos.OrderByDescending(e => e.Puntos)
                              .ThenByDescending(e => e.DiferenciaGoles)
                              .ThenByDescending(e => e.GolesAFavor)
+                             .ThenByDescending(e => e.GolesEnContra)
+                             .ThenByDescending(e => e.PartidosGanados)
+                             .ThenByDescending(e => e.PartidosEmpatados)
+                             .ThenByDescending(e => e.Nombre)
                              .ToList();
 
             for (int i = 0; i < Equipos.Count; i++)

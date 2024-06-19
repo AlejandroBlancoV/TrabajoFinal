@@ -1,6 +1,7 @@
 ﻿using Prueba1.Backend.BBDD;
 using Prueba1.Backend.Gestion;
 using Prueba1.Backend.Jugadores;
+using Prueba1.Backend.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,6 @@ using System.Windows.Shapes;
 
 namespace Prueba1
 {
-    /// <summary>
-    /// Lógica de interacción para PlantillaPage.xaml
-    /// </summary>
     public partial class PlantillaPage : Page
     {
         private readonly MiContexto _contexto;
@@ -28,7 +26,7 @@ namespace Prueba1
         {
             InitializeComponent();
             this._contexto = contexto;
-           
+            CargarDatosPlantilla();
         }
         private void Page_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -53,9 +51,20 @@ namespace Prueba1
             this.NavigationService.Navigate(new MenuInGamePage(_contexto));
 
         }
+
+        private void CargarDatosPlantilla()
+        {
+            // Suponiendo que tienes un método en _contexto que te devuelve la lista de jugadores del equipo del usuario
+            var equipoUsuario = _contexto.Equipos.FirstOrDefault(e => e.ControladoPorUsuario);
+            var txtEscudo = (Image)this.FindName("imgEscudo");
+            txtEscudo.Source = ImageUtils.ConvertirEscudoAImagen(equipoUsuario.Escudo);
+            lvJugadores.ItemsSource = equipoUsuario.Jugadores;
+            calcularValoresPlantilla();
+        }
+
         private void calcularValoresPlantilla()
         {
-           /* double totalPlantilla = 0;
+            double totalPlantilla = 0;
             double totalSalarios = 0;
             int totalEdad = 0;
             int numPorteros = 0;
@@ -65,8 +74,8 @@ namespace Prueba1
 
             foreach (Jugador jugador in lvJugadores.Items)
             {
-                totalPlantilla += jugador.Valor; // Asume que la clase Jugador tiene una propiedad Valor
-                totalSalarios += jugador.Salario; // Asume que la clase Jugador tiene una propiedad Salario
+                totalPlantilla += jugador.Valor;
+                totalSalarios += jugador.Salario;
                 totalEdad += jugador.Edad;
 
                 switch (jugador.Posicion)
@@ -86,7 +95,7 @@ namespace Prueba1
                 }
             }
 
-            double edadMedia = totalEdad / (double)lvJugadores.Items.Count;
+            double edadMedia = lvJugadores.Items.Count > 0 ? totalEdad / (double)lvJugadores.Items.Count : 0;
 
             txtTotalPlantilla.Text = $"Valor Plantilla: {totalPlantilla.ToString("N0")}€";
             txtTotalSalarios.Text = $"Total Salarios: {totalSalarios.ToString("N0")}€";
@@ -94,8 +103,8 @@ namespace Prueba1
             txtNumPorteros.Text = $"Nº Porteros: {numPorteros}";
             txtNumDefensas.Text = $"Nº Defensas: {numDefensas}";
             txtNumMedios.Text = $"Nº Medios: {numMedios}";
-            txtNumDelanteros.Text = $"Nº Delanteros: {numDelanteros}";*/
+            txtNumDelanteros.Text = $"Nº Delanteros: {numDelanteros}";
         }
-
     }
+
 }

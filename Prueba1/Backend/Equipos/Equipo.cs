@@ -39,6 +39,54 @@ namespace Prueba1.Backend.Equipos
             Jugadores = new List<Jugador>();
         }
 
+        public void CrearPlantilla()
+        {
+            Jugador[] jugadores= Jugadores.ToArray();
+            Plantilla = new Plantilla(jugadores);
+            OrdenarAlineacion(Plantilla);
+
+        }
+        public void OrdenarAlineacion(Plantilla p)
+        {
+            // Crear diferentes tipos de alineaciones
+            var alineacion1 = new Alineacion(
+                p.jugadores.Where(j => j is Portero).OrderByDescending(j => j.Media).Take(1)
+                .Concat(p.jugadores.Where(j => j is Defensor).OrderByDescending(j => j.Media).Take(4))
+                .Concat(p.jugadores.Where(j => j is Medio).OrderByDescending(j => j.Media).Take(3))
+                .Concat(p.jugadores.Where(j => j is Delantero).OrderByDescending(j => j.Media).Take(3))
+                .ToList());
+
+            var alineacion2 = new Alineacion(
+                p.jugadores.Where(j => j is Portero).OrderByDescending(j => j.Media).Take(1)
+                .Concat(p.jugadores.Where(j => j is Defensor).OrderByDescending(j => j.Media).Take(4))
+                .Concat(p.jugadores.Where(j => j is Medio).OrderByDescending(j => j.Media).Take(4))
+                .Concat(p.jugadores.Where(j => j is Delantero).OrderByDescending(j => j.Media).Take(2))
+                .ToList());
+
+            var alineacion3 = new Alineacion(
+                p.jugadores.Where(j => j is Portero).OrderByDescending(j => j.Media).Take(1)
+                .Concat(p.jugadores.Where(j => j is Defensor).OrderByDescending(j => j.Media).Take(3))
+                .Concat(p.jugadores.Where(j => j is Medio).OrderByDescending(j => j.Media).Take(4))
+                .Concat(p.jugadores.Where(j => j is Delantero).OrderByDescending(j => j.Media).Take(3))
+                .ToList());
+
+            // Comparar las medias globales de las alineaciones
+            var maxMedia = new[] { alineacion1.MediaMedia(), alineacion2.MediaMedia(), alineacion3.MediaMedia() }.Max();
+
+            // Devolver la alineación con la mayor media global
+            if (maxMedia == alineacion1.MediaMedia())
+            {
+                this.Alineacion= alineacion1;
+            }
+            else if (maxMedia == alineacion2.MediaMedia())
+            {
+                this.Alineacion = alineacion2;
+            }
+            else
+            {
+                this.Alineacion = alineacion3;
+            }
+        }
         public void CambiarAlineacion(Alineacion nuevaAlineacion)
         {
             Alineacion = nuevaAlineacion;

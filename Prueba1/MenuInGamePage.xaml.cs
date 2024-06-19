@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Prueba1.Backend.BBDD;
 using Prueba1.Backend.Competiciones;
+using Prueba1.Backend.Equipos;
 using Prueba1.Backend.Gestion;
 using Prueba1.Backend.Jugadores;
+using Prueba1.Backend.Utilidades;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -16,6 +18,7 @@ namespace Prueba1
     {
         private readonly MiContexto _contexto;
         private Partido partidoActual;
+        
 
         public MenuInGamePage(MiContexto contexto)
         {
@@ -26,46 +29,83 @@ namespace Prueba1
 
         private void CargarDatosPartido()
         {
-            var liga = _contexto.Ligas.Include(l => l.Equipos).ThenInclude(e => e.Partidos).FirstOrDefault();
-            if (liga != null)
+            // Obtener el equipo del usuario
+            var equipoUsuario = _contexto.Equipos.FirstOrDefault(e => e.ControladoPorUsuario);
+            if (equipoUsuario == null)
             {
-                var jornadaActual = liga.EncontrarJornadaEquipoUsuario();
-                if (jornadaActual != null)
-                {
-                    partidoActual = jornadaActual.Partidos.FirstOrDefault(p => p.Local.ControladoPorUsuario || p.Visitante.ControladoPorUsuario);
-                    MostrarDatosPartido();
-                }
+                MessageBox.Show("No se ha encontrado el equipo del usuario.");
+                return;
             }
+
+            // Asumiendo que cada equipo pertenece a una liga y cada liga tiene un calendario
+            var ligaDelEquipo = _contexto.Ligas.Include(l => l.Calendario)
+                                                .ThenInclude(c => c.Jornadas)
+                                                .ThenInclude(j => j.Partidos)
+                                                .FirstOrDefault(l => l.Equipos.Any(e => e.Id == equipoUsuario.Id));
+
+            if (ligaDelEquipo == null || ligaDelEquipo.Calendario == null)
+            {
+                MessageBox.Show("No se ha encontrado una liga o calendario para el equipo del usuario.");
+                return;
+            }
+
+            // Buscar la primera jornada con partidos no jugados que involucre al equipo del usuario
+            var jornadaActual = ligaDelEquipo.Calendario.Jornadas
+                .FirstOrDefault(j => j.Partidos.Any(p => !p.Jugado && (p.LocalId == equipoUsuario.Id || p.VisitanteId == equipoUsuario.Id)));
+
+            if (jornadaActual == null)
+            {
+                MessageBox.Show("No se ha encontrado una jornada actual para el equipo del usuario.");
+                return;
+            }
+
+            // Buscar el partido del equipo del usuario en la jornada actual
+            partidoActual = jornadaActual.Partidos.FirstOrDefault(p => !p.Jugado && (p.LocalId == equipoUsuario.Id || p.VisitanteId == equipoUsuario.Id));
+            if (partidoActual == null)
+            {
+                MessageBox.Show("No se ha encontrado un partido para el equipo del usuario en la jornada actual.");
+                return;
+            }
+
+            // Si se encuentra el partido, procedemos a mostrar los datos
+            MostrarDatosPartido();
         }
+
+
+
         private void MostrarDatosPartido()
         {
             if (partidoActual != null)
             {
-                // Asumiendo que tienes TextBlocks con los nombres x:Name="txtNombreLocal", "txtPosicionLocal", "txtValoracionLocal",
-                // "txtNombreVisitante", "txtPosicionVisitante", "txtValoracionVisitante" en tu XAML
-                // Aquí asignarías los valores. Por ejemplo:
+               
                 var equipoLocal = partidoActual.Local;
                 var equipoVisitante = partidoActual.Visitante;
 
-                // Encuentra los controles en el XAML y asigna los valores
+                
                 var txtNombreLocal = (TextBlock)this.FindName("txtNombreLocal");
                 var txtPosicionLocal = (TextBlock)this.FindName("txtPosicionLocal");
                 var txtValoracionLocal = (TextBlock)this.FindName("txtValoracionLocal");
+                var txtEscudoLocal = (Image)this.FindName("imgEscudoLocal");
 
                 var txtNombreVisitante = (TextBlock)this.FindName("txtNombreVisitante");
                 var txtPosicionVisitante = (TextBlock)this.FindName("txtPosicionVisitante");
                 var txtValoracionVisitante = (TextBlock)this.FindName("txtValoracionVisitante");
+                var txtEscudoVisitante = (Image)this.FindName("imgEscudoVisitante");
 
                 if (txtNombreLocal != null && txtPosicionLocal != null && txtValoracionLocal != null &&
                     txtNombreVisitante != null && txtPosicionVisitante != null && txtValoracionVisitante != null)
                 {
+                    int ValoracionMediaLocal = (int)Math.Round(equipoLocal.Jugadores.Any() ? equipoLocal.Jugadores.Average(j => j.Media) : 0);
                     txtNombreLocal.Text = equipoLocal.Nombre;
                     txtPosicionLocal.Text = $"Posición en la liga: {equipoLocal.Posicion}";
-                    txtValoracionLocal.Text = $"Valoración media: {equipoLocal.ObtenerMediaMediaPlantilla}";
+                    txtValoracionLocal.Text = $"Valoración media: {ValoracionMediaLocal}";
+                    txtEscudoLocal.Source = ImageUtils.ConvertirEscudoAImagen(equipoLocal.Escudo);
 
+                    int ValoracionMediaVisitante = (int)Math.Round(equipoVisitante.Jugadores.Any() ? equipoVisitante.Jugadores.Average(j => j.Media) : 0);
                     txtNombreVisitante.Text = equipoVisitante.Nombre;
                     txtPosicionVisitante.Text = $"Posición en la liga: {equipoVisitante.Posicion}";
-                    txtValoracionVisitante.Text = $"Valoración media: {equipoVisitante.ObtenerMediaMediaPlantilla}";
+                    txtValoracionVisitante.Text = $"Valoración media: {ValoracionMediaVisitante}";
+                    txtEscudoVisitante.Source = ImageUtils.ConvertirEscudoAImagen(equipoVisitante.Escudo);
                 }
             }
         }
@@ -106,6 +146,21 @@ namespace Prueba1
         private void btnPlantilla_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new PlantillaPage(_contexto));
+        }
+
+        private void btnAlineacion_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new AlineacionPage(_contexto));
+        }
+
+        private void btnFichajes_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new FichajesPage(_contexto));
+        }
+
+        private void btnClasificacion_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new ClasificacionPage(_contexto));
         }
     }
 }

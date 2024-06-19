@@ -155,20 +155,20 @@
                         </Grid.RowDefinitions>
 
 
-                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Nombre del equipo local" Foreground="White" Grid.ColumnSpan="2" Margin="10,0,182,0"/>
-                        <TextBlock Grid.Column="0" Text="Posición en la liga local" Foreground="White" Grid.ColumnSpan="2" Margin="10,31,181,31" Grid.RowSpan="3"/>
-                        <TextBlock Grid.Column="0" Grid.Row="2" Text="Valoración media local" Foreground="White" Grid.ColumnSpan="2" Margin="10,0,182,0"/>
+                        <TextBlock Name="txtNombreLocal" Grid.Column="0" Grid.Row="0" Text="Nombre del equipo local" Foreground="White" Grid.ColumnSpan="2" Margin="10,0,182,0"/>
+                        <TextBlock Name="txtPosicionLocal" Grid.Column="0" Text="Posición en la liga local" Foreground="White" Grid.ColumnSpan="2" Margin="10,31,181,31" Grid.RowSpan="3"/>
+                        <TextBlock Name="txtValoracionLocal" Grid.Column="0" Grid.Row="2" Text="Valoración media local" Foreground="White" Grid.ColumnSpan="2" Margin="10,0,182,0"/>
 
 
-                        <Image Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Source="pack://application:,,,/Images/Shields/Viol-EnciaCF.png" Width="150" Height="90"/>
+                        <Image Name="imgEscudoLocal" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Source="pack://application:,,,/Images/Shields/Viol-EnciaCF.png" Width="150" Height="90"/>
 
 
-                        <Image Grid.Column="3" Grid.Row="0" Grid.RowSpan="3" Source="pack://application:,,,/Images/Shields/MerengueCF.png" Width="150" Height="90"/>
+                        <Image Name="imgEscudoVisitante" Grid.Column="3" Grid.Row="0" Grid.RowSpan="3" Source="pack://application:,,,/Images/Shields/MerengueCF.png" Width="150" Height="90"/>
 
 
-                        <TextBlock Grid.Column="4" Grid.Row="0" Text="Nombre del equipo visitante" Foreground="White"/>
-                        <TextBlock Grid.Column="4" Grid.Row="1" Text="Posición en la liga visitante" Foreground="White"/>
-                        <TextBlock Grid.Column="4" Grid.Row="2" Text="Valoración media visitante" Foreground="White"/>
+                        <TextBlock Name="txtNombreVisitante" Grid.Column="4" Grid.Row="0" Text="Nombre del equipo visitante" Foreground="White"/>
+                        <TextBlock Name="txtPosicionVisitante" Grid.Column="4" Grid.Row="1" Text="Posición en la liga visitante" Foreground="White"/>
+                        <TextBlock Name="txtValoracionVisitante" Grid.Column="4" Grid.Row="2" Text="Valoración media visitante" Foreground="White"/>
                     </Grid>
                 </Border>
 
@@ -185,7 +185,7 @@
                     FontSize="15"
                     FontFamily="Montserrat"
                     Cursor="Hand"
-                    Click="btnContinuar_Click"
+                    Click="btnAlineacion_Click"
                         Margin="573,60,62,298" Grid.Row="2">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
@@ -285,7 +285,7 @@
                     FontSize="15"
                     FontFamily="Montserrat"
                     Cursor="Hand"
-                    Click="btnContinuar_Click"
+                    Click="btnFichajes_Click"
                     Margin="62,299,572,60" Grid.Row="2">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
@@ -318,7 +318,7 @@
                     FontSize="15"
                     FontFamily="Montserrat"
                     Cursor="Hand"
-                    Click="btnContinuar_Click"
+                    Click="btnClasificacion_Click"
                     Margin="62,60,572,298" Grid.Row="2">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">

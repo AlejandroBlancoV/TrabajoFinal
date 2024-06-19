@@ -1,13 +1,13 @@
-﻿<Page x:Class="Prueba1.EscogeEquipo"
-                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:convertidores="clr-namespace:Prueba1.Convertidores"
-      mc:Ignorable="d"
-      Title="PlantillaPage"
-      Background="Transparent" Height="550" Width="800"
-      MouseDown="Page_MouseDown">
+﻿<Page x:Class="Prueba1.ClasificacionPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:convertidores="clr-namespace:Prueba1.Convertidores"
+  mc:Ignorable="d"
+  Title="PlantillaPage"
+  Background="Transparent" Height="550" Width="800"
+  MouseDown="Page_MouseDown">
     <Page.Resources>
         <LinearGradientBrush x:Key="BorderBrushGradient" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#462AD8" Offset="0"/>
@@ -79,7 +79,7 @@
                         <ColumnDefinition Width="25"/>
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="PLANTILLA"
+                    <TextBlock Text="CLASIFICACION"
            Foreground="DarkGray"
            FontSize="10"
            FontFamily="Montserrat"
@@ -158,28 +158,95 @@
                     </Button>
                 </Grid>
 
-                
-                <ListView x:Name="lvEquipos" Margin="10,34,10,67" Background="Transparent" BorderBrush="{StaticResource BorderBrushGradient}" BorderThickness="1" Grid.Row="1">
-                    <ListView.Resources>
-                        <Style TargetType="ScrollBar" BasedOn="{StaticResource EstiloScrollBarPersonalizado}">
-                            <Setter Property="Orientation" Value="Vertical"/>
-                        </Style>
-                    </ListView.Resources>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="5">
-                                <Image Width="50" Height="50" Margin="5">
-                                    <Image.Source>
-                                        <Binding Path="Equipo.Escudo" Converter="{StaticResource EscudoAImagenConverter}"/>
-                                    </Image.Source>
-                                </Image>
-                                <TextBlock Text="{Binding Equipo.Nombre, Converter={StaticResource StringToUpperConverter}}" VerticalAlignment="Center" Margin="10,0" FontSize="16" Foreground="White"/>
-                                <TextBlock Text="{Binding ValoracionMedia}" VerticalAlignment="Center" Margin="10,0" FontSize="16" Foreground="#ff54e0"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
 
+                <ListView x:Name="lvClasificacion" Margin="10,34,10,67" Background="Transparent" BorderBrush="{StaticResource BorderBrushGradient}" BorderThickness="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.ColumnHeaderContainerStyle>
+                                <Style TargetType="GridViewColumnHeader">
+                                    <Setter Property="Foreground" Value="#DA34AE"/>
+                                    <Setter Property="Background" Value="{StaticResource BackgroundGradient}"/>
+                                    <Setter Property="Padding" Value="5"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                </Style>
+                            </GridView.ColumnHeaderContainerStyle>
+                            <GridViewColumn Header="Posición" Width="60">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Posicion}" Foreground="White" FontSize="14"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Equipo" Width="120">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Width="20" Height="20" Source="{Binding Escudo, Converter={StaticResource EscudoAImagenConverter}}" Margin="0,0,5,0"/>
+                                            <TextBlock Text="{Binding Nombre}" Foreground="White" FontSize="14"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="PJ" Width="40">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding PartidosJugados}" Foreground="#ADD8E6" FontSize="14"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="PG" Width="40">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding PartidosGanados}" Foreground="#ADD8E6" FontSize="14"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="PE" Width="40">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding PartidosEmpatados}" Foreground="#ADD8E6" FontSize="14"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="PP" Width="40">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding PartidosPerdidos}" Foreground="#ADD8E6" FontSize="14"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="GF" Width="40">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding GolesAFavor}" Foreground="#ADD8E6" FontSize="14"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="GC" Width="40">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding GolesEnContra}" Foreground="#ADD8E6" FontSize="14"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="DG" Width="40">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding DiferenciaGoles}" Foreground="#ADD8E6" FontSize="14"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Puntos" Width="60">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Puntos}" Foreground="#DA34AE" FontSize="14"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
                 </ListView>
+
 
 
 
@@ -216,40 +283,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button x:Name="btnSeleccionar"
-        BorderThickness="0"
-        Content="SELECCIONAR"
-        Foreground="White"
-        FontSize="15"
-        FontFamily="Montserrat"
-        Cursor="Hand"
-        Click="btnSeleccionar_Click"
-        Margin="634,451,10,10" Grid.Row="1">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="#462AD8"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#28AEED"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border Width="150" Height="40"
-                                CornerRadius="20"
-                                Background="{TemplateBinding Background}">
-                                <ContentPresenter VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"/>
-
-                            </Border>
-
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <TextBlock Text="SELECCION DE EQUIPO" Foreground="White" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" Grid.Row="1"/>
+                <TextBlock Text="CLASIFICACION" Foreground="White" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" Grid.Row="1"/>
             </Grid>
         </Border>
     </Border>

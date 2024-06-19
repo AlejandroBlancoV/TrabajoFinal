@@ -40,9 +40,7 @@ namespace Prueba1
 
         private void btnContinuar_Click(object sender, RoutedEventArgs e)
         {
-            /*GestionJugadores gestionJugadores = new GestionJugadores();
-            Delantero prueba= gestionJugadores.GeneraDelantero();
-            MessageBox.Show(prueba.ToString());*/
+            this.NavigationService.Navigate(new MenuInGamePage(_contexto));
         }
 
         private void btnNuevaPartida_Click(object sender, RoutedEventArgs e)

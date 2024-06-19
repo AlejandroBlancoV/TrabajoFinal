@@ -1,4 +1,5 @@
-﻿using Prueba1.Backend.Equipos;
+﻿using Prueba1.Backend.BBDD;
+using Prueba1.Backend.Equipos;
 
 namespace Prueba1.Backend.Competiciones
 {
@@ -7,16 +8,17 @@ namespace Prueba1.Backend.Competiciones
         public int Id { get; set; }
         public List<Jornada> Jornadas { get; set; }
 
-        public Calendario(List<Equipo> equipos)
+        public Calendario(List<Equipo> equipos,MiContexto contexto)
         {
-            Jornadas = GenerarCalendario(equipos);
+            Jornadas = GenerarCalendario(equipos,contexto);
+            
         }
 
         public Calendario()
         {
         }
 
-        private List<Jornada> GenerarCalendario(List<Equipo> equipos)
+        public List<Jornada> GenerarCalendario(List<Equipo> equipos,MiContexto contexto)
         {
             var calendario = new List<Jornada>();
 
@@ -39,13 +41,16 @@ namespace Prueba1.Backend.Competiciones
                     {
                         equipoVisitante = equipos.Count - 1;
                     }
-
-                    partidosDeLaJornada.Partidos.Add(new Partido { Local = equipos[equipoLocal], Visitante = equipos[equipoVisitante] });
+                    Partido p = new Partido { Local = equipos[equipoLocal], Visitante = equipos[equipoVisitante] };
+                    partidosDeLaJornada.Partidos.Add(p);
+                   
+                    
                 }
 
                 calendario.Add(partidosDeLaJornada);
+               
             }
-
+            
             return calendario;
         }
     }

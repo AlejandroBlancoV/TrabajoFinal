@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Prueba1.Backend.BBDD;
+using Prueba1.Backend.Jugadores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,7 +74,7 @@ namespace Prueba1
 
         private void btnVolver_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new MenuInGamePage(_contexto));
+            this.NavigationService.Navigate(new MenuPage(_contexto));
 
         }
 
@@ -88,7 +89,11 @@ namespace Prueba1
                 {
                     equipo.ControladoPorUsuario = true;
                     equipo.Presupuesto = 50000000;
-                    await _contexto.SaveChangesAsync(); 
+                    await _contexto.SaveChangesAsync();
+
+                    // Llama aquí al método OrdenarClasificacionLiga
+                    await OrdenarClasificacionLiga(_contexto, equipoId);
+
                     MessageBox.Show($"El equipo {equipo.Nombre} ha sido seleccionado como controlado por el usuario.");
                     this.NavigationService.Navigate(new MenuInGamePage(_contexto));
                 }
@@ -97,6 +102,29 @@ namespace Prueba1
             {
                 MessageBox.Show("Por favor, selecciona un equipo de la lista.");
             }
+        }
+
+        private async Task OrdenarClasificacionLiga(MiContexto contexto, int equipoId)
+        {
+            var equipoUsuario = await contexto.Equipos.FindAsync(equipoId);
+            if (equipoUsuario == null)
+            {
+                MessageBox.Show("No se ha encontrado el equipo del usuario.");
+                return;
+            }
+
+            var ligaDelEquipo = await contexto.Ligas.Include(l => l.Equipos)
+                                                     .FirstOrDefaultAsync(l => l.Equipos.Any(e => e.Id == equipoUsuario.Id));
+
+            if (ligaDelEquipo == null)
+            {
+                MessageBox.Show("No se ha encontrado una liga para el equipo del usuario.");
+                return;
+            }
+
+            ligaDelEquipo.OrganizarClasificacion();
+
+            await contexto.SaveChangesAsync();
         }
 
     }
