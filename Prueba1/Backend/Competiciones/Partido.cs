@@ -79,19 +79,19 @@ namespace Prueba1.Backend.Competiciones
             int resultado = rnd.Next(0, 100);
             if (resultado <= ProbabilidadLocal)
             {
-                // Gana el local
+                
                 partido.Resultado.GolesLocal = rnd.Next(1, 5);
                 partido.Resultado.GolesVisitante = rnd.Next(0, partido.Resultado.GolesLocal);
             }
             else if (resultado <= ProbabilidadLocal + ProbabilidadEmpate)
             {
-                // Empate
+                
                 partido.Resultado.GolesLocal = rnd.Next(0, 5);
                 partido.Resultado.GolesVisitante = partido.Resultado.GolesLocal;
             }
             else
             {
-                // Gana el visitante
+                
                 partido.Resultado.GolesVisitante = rnd.Next(1, 5);
                 partido.Resultado.GolesLocal = rnd.Next(0, partido.Resultado.GolesVisitante);
             }

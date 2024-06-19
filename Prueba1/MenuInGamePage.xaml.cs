@@ -29,7 +29,7 @@ namespace Prueba1
 
         private void CargarDatosPartido()
         {
-            // Obtener el equipo del usuario
+            
             var equipoUsuario = _contexto.Equipos.FirstOrDefault(e => e.ControladoPorUsuario);
             if (equipoUsuario == null)
             {
@@ -37,7 +37,7 @@ namespace Prueba1
                 return;
             }
 
-            // Asumiendo que cada equipo pertenece a una liga y cada liga tiene un calendario
+           
             var ligaDelEquipo = _contexto.Ligas.Include(l => l.Calendario)
                                                 .ThenInclude(c => c.Jornadas)
                                                 .ThenInclude(j => j.Partidos)
@@ -49,7 +49,7 @@ namespace Prueba1
                 return;
             }
 
-            // Buscar la primera jornada con partidos no jugados que involucre al equipo del usuario
+            
             var jornadaActual = ligaDelEquipo.Calendario.Jornadas
                 .FirstOrDefault(j => j.Partidos.Any(p => !p.Jugado && (p.LocalId == equipoUsuario.Id || p.VisitanteId == equipoUsuario.Id)));
 
@@ -59,7 +59,7 @@ namespace Prueba1
                 return;
             }
 
-            // Buscar el partido del equipo del usuario en la jornada actual
+            
             partidoActual = jornadaActual.Partidos.FirstOrDefault(p => !p.Jugado && (p.LocalId == equipoUsuario.Id || p.VisitanteId == equipoUsuario.Id));
             if (partidoActual == null)
             {
@@ -67,7 +67,7 @@ namespace Prueba1
                 return;
             }
 
-            // Si se encuentra el partido, procedemos a mostrar los datos
+            
             MostrarDatosPartido();
         }
 

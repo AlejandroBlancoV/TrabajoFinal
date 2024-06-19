@@ -56,7 +56,7 @@ namespace Prueba1
 
         private void CargarDatosPlantilla()
         {
-            // Suponiendo que tienes un método en _contexto que te devuelve la lista de jugadores del equipo del usuario
+            
             var equipoUsuario = _contexto.Equipos.FirstOrDefault(e => e.ControladoPorUsuario);
             var txtEscudo = (Image)this.FindName("imgEscudo");
             txtEscudo.Source = ImageUtils.ConvertirEscudoAImagen(equipoUsuario.Escudo);
@@ -68,7 +68,7 @@ namespace Prueba1
                                                 .ThenByDescending(j => j.Media)
                                                 .ToList();
 
-            // Actualizar el ListView con los jugadores disponibles
+            
             lvJugadores.ItemsSource = jugadoresDisponibles;
         }
 

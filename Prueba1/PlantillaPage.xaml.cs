@@ -54,7 +54,7 @@ namespace Prueba1
 
         private void CargarDatosPlantilla()
         {
-            // Suponiendo que tienes un método en _contexto que te devuelve la lista de jugadores del equipo del usuario
+            
             var equipoUsuario = _contexto.Equipos.FirstOrDefault(e => e.ControladoPorUsuario);
             var txtEscudo = (Image)this.FindName("imgEscudo");
             txtEscudo.Source = ImageUtils.ConvertirEscudoAImagen(equipoUsuario.Escudo);

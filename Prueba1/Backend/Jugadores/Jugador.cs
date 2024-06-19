@@ -10,9 +10,9 @@ namespace Prueba1.Backend.Jugadores
         public Equipo Equipo { get; set; }
         public int Edad { get; set; }
         public Posicion Posicion { get; set; }
-        public int Media { get; set; }// Atributo que se calcula según posición
-        public int Valor { get; set; }// Atributo que se calcula según media y edad
-        public int Salario { get; set; }// Atributo que se calcula según media y valor
+        public int Media { get; set; }
+        public int Valor { get; set; }
+        public int Salario { get; set; }
         public int Defensa { get; set; }
         public int Pase { get; set; }
         public int Fisico { get; set; }

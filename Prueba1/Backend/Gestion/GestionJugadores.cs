@@ -115,7 +115,7 @@ namespace Prueba1.Backend.Gestion
         }
         public Alineacion OrdenarAlineacion(Plantilla p)
         {
-            // Crear diferentes tipos de alineaciones
+            
             var alineacion1 = new Alineacion(
                 p.jugadores.Where(j => j is Portero).OrderByDescending(j => j.Media).Take(1)
                 .Concat(p.jugadores.Where(j => j is Defensor).OrderByDescending(j => j.Media).Take(4))
@@ -137,10 +137,10 @@ namespace Prueba1.Backend.Gestion
                 .Concat(p.jugadores.Where(j => j is Delantero).OrderByDescending(j => j.Media).Take(3))
                 .ToList());
 
-            // Comparar las medias globales de las alineaciones
+            
             var maxMedia = new[] { alineacion1.MediaMedia(), alineacion2.MediaMedia(), alineacion3.MediaMedia() }.Max();
 
-            // Devolver la alineación con la mayor media global
+            
             if (maxMedia == alineacion1.MediaMedia())
             {
                 return alineacion1;

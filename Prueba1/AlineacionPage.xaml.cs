@@ -64,12 +64,12 @@ namespace Prueba1
             
             if (equipoUsuario != null)
             {
-                // Asumiendo que equipoUsuario.Jugadores ya contiene la lista completa de jugadores del equipo
+                
                 var jugadoresNoEnAlineacion = equipoUsuario.Jugadores
                                                            .Where(j => equipoUsuario.Alineacion == null || !equipoUsuario.Alineacion.Jugadores.Contains(j))
                                                            .ToList();
 
-                // Asignar la lista filtrada al ListView de la plantilla
+                
                 lvPlantilla.ItemsSource = jugadoresNoEnAlineacion;
             }
         }
@@ -81,18 +81,18 @@ namespace Prueba1
             txtEscudo.Source = ImageUtils.ConvertirEscudoAImagen(equipoUsuario.Escudo);
             if (equipoUsuario != null)
             {
-                // Convertir el array a List<Jugador> y luego a Jugador[]
+               
                 Jugador[] arrayJugadores = equipoUsuario.Jugadores.ToArray();
 
-                // Crear un nuevo objeto Plantilla con el array de jugadores
+                
                 Plantilla plantillaConJugadores = new Plantilla(arrayJugadores);
 
-                // Llamar al método OrdenarAlineacion, que ahora realiza la asignación internamente
+                
                 equipoUsuario.OrdenarAlineacion(plantillaConJugadores);
 
                 if (equipoUsuario.Alineacion != null)
                 {
-                    // Asignar los jugadores de la alineación al ListView de la alineación
+                    
                     lvAlineacion.ItemsSource = equipoUsuario.Alineacion.Jugadores;
                 }
             }
@@ -114,7 +114,7 @@ namespace Prueba1
 
             try
             {
-                // Quitar el jugador de la alineación y agregar el nuevo jugador
+                
                 equipoUsuario.Alineacion.Jugadores.Remove(jugadorAlineacion);
                 equipoUsuario.Alineacion.Jugadores.Add(jugadorPlantilla);
 
@@ -126,18 +126,18 @@ namespace Prueba1
                 return;
             }
 
-            // Ordenar los jugadores de la alineación por posición
+            
             var jugadoresAlineacionOrdenados = equipoUsuario.Alineacion.Jugadores
                                                               .OrderBy(j => j.Posicion)
                                                               .ToList();
 
-            // Ordenar los jugadores de la plantilla por posición
+            
             var jugadoresNoEnAlineacionOrdenados = equipoUsuario.Jugadores
                                                                 .Where(j => equipoUsuario.Alineacion == null || !equipoUsuario.Alineacion.Jugadores.Contains(j))
                                                                 .OrderBy(j => j.Posicion)
                                                                 .ToList();
 
-            // Actualizar las vistas para reflejar los cambios y el ordenamiento
+            
             lvAlineacion.ItemsSource = jugadoresAlineacionOrdenados;
             lvPlantilla.ItemsSource = jugadoresNoEnAlineacionOrdenados;
         }

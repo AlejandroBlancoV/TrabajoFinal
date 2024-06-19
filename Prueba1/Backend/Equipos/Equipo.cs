@@ -2,7 +2,6 @@
 
 namespace Prueba1.Backend.Equipos
 {
-    // Bufones Escandalosos Trayendo Improvisaciones Simpáticas (B.E.T.I.S)
     public class Equipo
     {
         public int Id { get; set; }
@@ -48,7 +47,7 @@ namespace Prueba1.Backend.Equipos
         }
         public void OrdenarAlineacion(Plantilla p)
         {
-            // Crear diferentes tipos de alineaciones
+            
             var alineacion1 = new Alineacion(
                 p.jugadores.Where(j => j is Portero).OrderByDescending(j => j.Media).Take(1)
                 .Concat(p.jugadores.Where(j => j is Defensor).OrderByDescending(j => j.Media).Take(4))
@@ -70,10 +69,10 @@ namespace Prueba1.Backend.Equipos
                 .Concat(p.jugadores.Where(j => j is Delantero).OrderByDescending(j => j.Media).Take(3))
                 .ToList());
 
-            // Comparar las medias globales de las alineaciones
+            
             var maxMedia = new[] { alineacion1.MediaMedia(), alineacion2.MediaMedia(), alineacion3.MediaMedia() }.Max();
 
-            // Devolver la alineación con la mayor media global
+            
             if (maxMedia == alineacion1.MediaMedia())
             {
                 this.Alineacion= alineacion1;

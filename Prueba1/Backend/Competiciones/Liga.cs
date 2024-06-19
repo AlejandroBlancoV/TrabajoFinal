@@ -48,7 +48,7 @@ namespace Prueba1.Backend.Competiciones
 
             int partidosJugados = equipoUsuario.PartidosJugados;
 
-            // Asumiendo que cada equipo juega exactamente un partido por jornada
+            
             if (partidosJugados >= Calendario.Jornadas.Count) return null;
 
             return Calendario.Jornadas[partidosJugados];

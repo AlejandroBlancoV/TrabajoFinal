@@ -38,7 +38,7 @@ namespace Prueba1
             {
                 var equiposConMedia = await _contexto.Equipos.Include(e => e.Jugadores).Select(equipo => new
                 {
-                    EquipoId = equipo.Id, // Incluye el Id del equipo aquí
+                    EquipoId = equipo.Id, 
                     Equipo = equipo,
                     ValoracionMedia = (int)Math.Round(equipo.Jugadores.Any() ? equipo.Jugadores.Average(j => j.Media) : 0)
                 }).ToListAsync();
@@ -91,10 +91,10 @@ namespace Prueba1
                     equipo.Presupuesto = 50000000;
                     await _contexto.SaveChangesAsync();
 
-                    // Llama aquí al método OrdenarClasificacionLiga
+                    
                     await OrdenarClasificacionLiga(_contexto, equipoId);
 
-                    MessageBox.Show($"El equipo {equipo.Nombre} ha sido seleccionado como controlado por el usuario.");
+                    //MessageBox.Show($"El equipo {equipo.Nombre} ha sido seleccionado como controlado por el usuario.");
                     this.NavigationService.Navigate(new MenuInGamePage(_contexto));
                 }
             }

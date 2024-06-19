@@ -45,11 +45,11 @@ namespace Prueba1.Backend.Gestion
                 equipos.Add(equipo);
             }
 
-            // Guarda los equipos en la base de datos
+            
             contexto.Equipos.AddRange(equipos);
             contexto.SaveChanges();
 
-            // Genera y guarda los jugadores para cada equipo
+            
             foreach (var equipo in equipos)
             {
                 var jugadores = gestionJugadores.GenerarPlantillaPorDefecto();
@@ -62,7 +62,7 @@ namespace Prueba1.Backend.Gestion
 
             }
 
-            contexto.SaveChanges(); // Guarda todos los jugadores en la base de datos
+            contexto.SaveChanges(); 
 
             return equipos;
         }

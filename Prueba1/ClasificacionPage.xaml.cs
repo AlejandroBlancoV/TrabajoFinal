@@ -34,7 +34,7 @@ namespace Prueba1
         private void CargarDatosClasificacion()
         {
             var equipos = _contexto.Equipos
-                                   .OrderBy(e => e.Posicion) // Cambiado a OrderBy para orden ascendente
+                                   .OrderBy(e => e.Posicion) 
                                    .ToList();
 
             lvClasificacion.ItemsSource = equipos;

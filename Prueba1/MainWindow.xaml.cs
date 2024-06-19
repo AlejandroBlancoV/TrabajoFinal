@@ -1,12 +1,12 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using Prueba1.Backend.BBDD; // Asegúrate de importar el espacio de nombres correcto
+using Prueba1.Backend.BBDD; 
 
 namespace Prueba1
 {
     public partial class MainWindow : Window
     {
-        // Crea una instancia de MiContexto
+        
         public static MiContexto Contexto { get; } = new MiContexto();
 
         public MainWindow()
